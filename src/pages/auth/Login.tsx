@@ -92,15 +92,14 @@ const Login = ({authService}: IAppProps) => {
         <form>
           <input type="text" placeholder="아이디" />
           <input type="password" placeholder="비밀번호" />
-          <Button variant="contained" className={styles.button} onClick={onLogin}>
-            로그인
-          </Button>
-          <button className={styles.button} onClick={onLogin}>
-            Login
-          </button>
-          <button className={styles.button} onClick={logout}>
-            Logout
-          </button>
+          <div className={styles.button}>
+            <Button variant="contained" onClick={onLogin}>
+              로그인
+            </Button>
+            <Button variant="contained" onClick={logout}>
+              Logout
+            </Button>
+          </div>
         </form>
       </section>
       <Footer />
