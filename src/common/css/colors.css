@@ -1,0 +1,10 @@
+@value adminBlack: black;
+@value adminWhite: white;
+@value adminLightGrey: #e8e7e6;
+@value adminLightPink: #ffeae8;
+@value adminGrey: #626262;
+@value adminGreen: #385461;
+@value adminPink: pink;
+@value adminShadow: rgba(217, 217, 217, 1);
+@value adminColorful: linear-gradient(166deg, rgba(237, 193, 211, 1) 0%,rgba(212, 149, 161, 1) 60%, rgba(162, 63, 63, 1) 100%, rgba(127, 188, 242, 1) 100%);
+@value adminWheat: wheat;

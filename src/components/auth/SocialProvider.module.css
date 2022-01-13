@@ -1,0 +1,21 @@
+@value adminGreen, adminWhite, adminBlack from '../../common/css/colors.css';
+
+.button {
+	display: flex;
+	width: 100%;
+	height: 2.5em;
+	font-size: 1.2rem;
+	background-color: transparent;
+	border: 1px solid red;
+	outline: 0;
+}
+
+.img {
+	width: 35px;
+	height: 35px;
+}
+
+.img:hover {
+	cursor: pointer;
+	background-color: transparent;
+}
