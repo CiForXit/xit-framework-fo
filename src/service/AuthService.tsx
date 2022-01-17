@@ -1,5 +1,7 @@
 import {IUser} from '../model/AuthModel';
 import {client, CustomInstance} from './ApiService';
+import {LOGIN_URL} from "../common/xitUrl";
+import {AxiosResponse} from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_API_URL;
 const REDIRECT_URI = `localhost:3000/oauth/redirect`;
@@ -11,10 +13,10 @@ class AuthService {
   }
 
   async login(user: IUser) {
-    console.log(`login::`, user);
-    const res = await this.reqApi.post<any>('/api/auth/login', user);
+    const {res} = await this.reqApi.post(LOGIN_URL, user);
+
     //console.log(res);
-    return {...res!.data.data};
+    return res.data.data;
   }
 
   getSocialLoginUrl(socialType: string) {

@@ -35,20 +35,25 @@ export interface CustomInstance extends AxiosInstance {
 }
 
 export const client: CustomInstance = axios.create({
-	baseURL: process.env.NODE_ENV !== 'development' ? process.env.REACT_APP_API_URL : '',
-	// proxy cors : true, 운영은 false
+	baseURL: process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : '',
 	withCredentials: process.env.NODE_ENV === 'development', // 개발시만 사용 : crossdomain
-	timeout: 100000
+	//timeout: 100000,
+	headers: {
+//		authorization: accessToken
+	}
 	//params: {key: key}
 });
 
-client.interceptors.response.use(
+/**
+ * before axios request
+ */
+client.interceptors.request.use(
 	function (config) {
 		Swal.fire({
 			title: 'Please Wait ...',
 			//html: '',
 			//imageUrl:
-			timer: 10000,
+			//timer: 10000,
 			didOpen: () => Swal.showLoading()
 		}).then((r) => {});
 		return config;
@@ -60,6 +65,9 @@ client.interceptors.response.use(
 	}
 );
 
+/**
+ * after axios response
+ */
 axios.interceptors.response.use(
 	function (response) {
 		//	Swal.close();

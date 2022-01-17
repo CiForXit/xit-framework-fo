@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import {TextField} from "@mui/material";
 import Swal from "sweetalert2";
 import * as events from "events";
+import axios from "axios";
 
 interface ILoginProps {
   user: IUser;
@@ -30,6 +31,8 @@ const Login = ({authService}: IAppProps) => {
     if(id === 'password') setPassword(value);
   };
   const clientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
+
+  const SERVER = 'http://localhost:8090/api/v1/auth/login';
 
   const responseGoogle = (response: any) => {
     if (!response) return;
@@ -55,27 +58,41 @@ const Login = ({authService}: IAppProps) => {
     authService.getSocialLoginUrl(socialType);
   };
   const onLogin = (e: MouseEvent<HTMLButtonElement>) => {
-    debugger
+
 
     if(!userId){
       Swal.fire({
-        title: 'Please Wait ...',
-        //html: '',
-        //imageUrl:
-        timer: 10000,
-        didOpen: () => Swal.showLoading()
-      }).then((r) => {})
+        title: 'Error',
+        html: '사용자 ID를 입력해 주세요'
+      }).then((r) => {});
+      return false;
     }
 
+    if(!password){
+      Swal.fire({
+        title: 'Error',
+        html: '비밀번호를 입력해 주세요'
+      }).then((r) => {});
+      return false;
+    }
 
-    setLoginUser({
+    authService.login({
       providerType: ProviderType.LOCAL,
-      userId: userId,  // ?? alert('''')
-      password: password,
-      picture: ''
-    });
-    //authService.login(loginUser)
-    //   .then((data) => goToMaker(data));
+      picture: '',
+      userId: userId,
+      token: '',// ?? alert('''')
+      password: password
+    })
+       .then((data) => console.log(data));
+
+
+    // const res = axios.post(LOGIN_URL, loginUser, {
+    //   //headers: {
+    //     //access_token: cookies.get('access_token'),
+    //   //},
+    // });
+
+
   };
 
   const logout = () => {
