@@ -4,11 +4,14 @@ import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
 import React, {MouseEvent, useState} from 'react';
 //import GoogleLogin, {GoogleLogout} from 'react-google-login';
-import {ISocialProvider, IUser, LoginType} from '../../model/AuthModel';
+import {ISocialProvider, IUser, ProviderType} from '../../model/AuthModel';
 import {IAppProps} from '../../App';
 import {soicial as tData} from '../../common/js/social_provider';
 import SocialProvider from '../../components/auth/SocialProvider';
 import Button from '@mui/material/Button';
+import {TextField} from "@mui/material";
+import Swal from "sweetalert2";
+import * as events from "events";
 
 interface ILoginProps {
   user: IUser;
@@ -17,6 +20,15 @@ interface ILoginProps {
 
 const Login = ({authService}: IAppProps) => {
   const [loginUser, setLoginUser] = useState<IUser>();
+  const [userId, setUserId] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  //const [password, setPassword] = React.useState();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {id, value} = e.target;
+    if(!value) return;
+    if(id === 'userId') setUserId(value);
+    if(id === 'password') setPassword(value);
+  };
   const clientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
 
   const responseGoogle = (response: any) => {
@@ -26,7 +38,7 @@ const Login = ({authService}: IAppProps) => {
     console.log(`accessToken : [${response.accessToken}]`);
     console.log(`tokenObj : `, response.tokenObj);
     setLoginUser({
-      snsType: LoginType.GOOGLE,
+      providerType: ProviderType.GOOGLE,
       userId: response.googleId,
       picture: ''
     });
@@ -39,31 +51,36 @@ const Login = ({authService}: IAppProps) => {
     console.log(response);
   };
 
-  const goToMaker = () => {
-    // console.log(user.uid);
-    // history.push({
-    //   pathname: '/maker',
-    //   state: {
-    //     id: user.uid,
-    //     email: user.email
-    //   }
-    // });
-  };
-
   const onSocialLogin = (e: MouseEvent<HTMLButtonElement>, socialType: string) => {
     authService.getSocialLoginUrl(socialType);
   };
   const onLogin = (e: MouseEvent<HTMLButtonElement>) => {
-    if (!e || !e.currentTarget || e.currentTarget.textContent) return;
-    //authService.
-    // authService //
-    //   .login(e.currentTarget.textContent)
+    debugger
+
+    if(!userId){
+      Swal.fire({
+        title: 'Please Wait ...',
+        //html: '',
+        //imageUrl:
+        timer: 10000,
+        didOpen: () => Swal.showLoading()
+      }).then((r) => {})
+    }
+
+
+    setLoginUser({
+      providerType: ProviderType.LOCAL,
+      userId: userId,  // ?? alert('''')
+      password: password,
+      picture: ''
+    });
+    //authService.login(loginUser)
     //   .then((data) => goToMaker(data));
   };
 
   const logout = () => {
     setLoginUser({
-      snsType: LoginType.DEFAULT,
+      providerType: ProviderType.LOCAL,
       userId: '',
       picture: ''
     });
@@ -75,23 +92,14 @@ const Login = ({authService}: IAppProps) => {
       <section>
         <h1>Login</h1>
         <ul className={styles.list}>
-          {/*<li className={styles.item}>*/}
-          {/*  <button className={styles.button} onClick={onLogin}>*/}
-          {/*    Google*/}
-          {/*  </button>*/}
-          {/*</li>*/}
-          {/*<li className={styles.item}>*/}
-          {/*  <button className={styles.button} onClick={onLogin}>*/}
-          {/*    Github*/}
-          {/*  </button>*/}
-          {/*</li>*/}
           {tData.map((d: ISocialProvider) => (
             <SocialProvider key={d.socialType} authService={authService} social={d} />
           ))}
         </ul>
         <form>
-          <input type="text" placeholder="아이디" />
-          <input type="password" placeholder="비밀번호" />
+
+          <input id="userId" type="userId" placeholder="아이디" value={userId} onChange={handleChange}/>
+          <input id="password" type="password" placeholder="비밀번호" value={password} onChange={handleChange}/>
           <div className={styles.button}>
             <Button variant="contained" onClick={onLogin}>
               로그인
@@ -103,17 +111,8 @@ const Login = ({authService}: IAppProps) => {
         </form>
       </section>
       <Footer />
-      {/*<GoogleLogin*/}
-      {/*  buttonText="login"*/}
-      {/*  clientId={clientId}*/}
-      {/*  onSuccess={responseGoogle}*/}
-      {/*  onFailure={responseErrorGoogle}*/}
-      {/*  cookiePolicy={'single_host_origin'}*/}
-      {/*/>*/}
-
-      {/*<GoogleLogout clientId={clientId} buttonText="Logout" onLogoutSuccess={logout} />*/}
     </section>
-  );
-};
+  )
+}
 
 export default Login;

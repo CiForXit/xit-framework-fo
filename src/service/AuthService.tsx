@@ -12,12 +12,7 @@ class AuthService {
 
   async login(user: IUser) {
     console.log(`login::`, user);
-    const res = await this.reqApi.post<any>('/api/auth/login', {
-      snsType: 'GOOGLE',
-      userId: 'minuk926',
-      userPswd: 'minuk926',
-      picture: ''
-    });
+    const res = await this.reqApi.post<any>('/api/auth/login', user);
     //console.log(res);
     return {...res!.data.data};
   }

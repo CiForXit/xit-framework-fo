@@ -1,20 +1,20 @@
-export enum LoginType {
-  DEFAULT = 'DEFAULT',
+export enum ProviderType {
   GOOGLE = 'GOOGLE',
   KAKAO = 'KAKAO',
-  GITHUB = 'GITHUB'
+  NAVER = 'NAVER',
+  LOCAL = 'LOCAL'
 }
 
 export interface IUser {
-  snsType: LoginType;
+  providerType: ProviderType;
   picture: string;
   userId: string;
   token?: string;
-  passwd?: string;
+  password?: string;
 }
 
 export interface ILoginUser {
-  snsType: LoginType;
+  providerType: ProviderType;
   userId: string;
   token: string;
   refreshToken?: string;
