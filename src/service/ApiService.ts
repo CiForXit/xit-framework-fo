@@ -1,92 +1,113 @@
 import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
 import Swal from 'sweetalert2';
+import XitCmm from '../common/XitCmm';
 //import withReactContent from 'sweetalert2-react-content';
 
 //const SweetAlert = withReactContent(Swal);
 
 type CustomResponseFormat<T = any> = {
-	response: T;
-	refreshedToken?: string;
+  response: T;
+  refreshedToken?: string;
 };
 
 export interface CustomInstance extends AxiosInstance {
-	interceptors: {
-		request: AxiosInterceptorManager<AxiosRequestConfig>;
-		response: AxiosInterceptorManager<AxiosResponse<CustomResponseFormat>>;
-	};
+  interceptors: {
+    request: AxiosInterceptorManager<AxiosRequestConfig>;
+    response: AxiosInterceptorManager<AxiosResponse<CustomResponseFormat>>;
+  };
 
-	getUri(config?: AxiosRequestConfig): string;
+  getUri(config?: AxiosRequestConfig): string;
 
-	request<T>(config: AxiosRequestConfig): Promise<T>;
+  request<T>(config: AxiosRequestConfig): Promise<T>;
 
-	get<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
+  get<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
 
-	delete<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
+  delete<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
 
-	head<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
+  head<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
 
-	options<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
+  options<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
 
-	post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
+  post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 
-	put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
+  put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 
-	patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
+  patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 }
 
-export const client: CustomInstance = axios.create({
-	baseURL: process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : '',
-	withCredentials: process.env.NODE_ENV === 'development', // 개발시만 사용 : crossdomain
-	//timeout: 100000,
-	headers: {
-//		authorization: accessToken
-	}
-	//params: {key: key}
+const reqApi: CustomInstance = axios.create({
+  baseURL: process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : '',
+  withCredentials: process.env.NODE_ENV === 'development', // 개발시만 사용 : crossdomain
+  timeout: 1000,
+  headers: {
+    'Content-Type': 'application/json'
+    //		authorization: accessToken
+  }
+  //params: {key: key}
 });
 
 /**
  * before axios request
  */
-client.interceptors.request.use(
-	function (config) {
-		Swal.fire({
-			title: 'Please Wait ...',
-			//html: '',
-			//imageUrl:
-			//timer: 10000,
-			didOpen: () => Swal.showLoading()
-		}).then((r) => {});
-		return config;
-	},
-	(error) => {
-		Swal.close();
-		console.log('ERROR :: request loading finished!!!', error);
-		return Promise.reject(error);
-	}
+reqApi.interceptors.request.use(
+  (config) => {
+    Swal.fire({
+      title: 'Please Wait ...',
+      //html: '',
+      //imageUrl:
+      //timer: 10000,
+      didOpen: () => Swal.showLoading()
+    }).then((r) => {});
+    return config;
+  },
+  ({config, request, response, ...error}) => {
+    console.log('========== ApiService.request error Data ==========');
+    return alertError(config, request, response, error);
+  }
 );
 
 /**
  * after axios response
  */
-axios.interceptors.response.use(
-	function (response) {
-		//	Swal.close();
-		return Promise.resolve(response);
-	},
-	(error) => {
-		Swal.close();
-		console.log('ERROR :: response loading finished!!!', error);
-		return Promise.reject(error);
-	}
+reqApi.interceptors.response.use(
+  (response) => {
+    Swal.close();
+    return Promise.resolve(response.data);
+  },
+  ({config, request, response, ...error}) => {
+    console.log('========== ApiService.response Error Data ==========');
+    return alertError(config, request, response, error);
+  }
 );
 
-// res - AxiosResponse<CustomResponseFormat>
-// client.interceptors.response.use((res) => {
-//   if (res.data.refreshedToken) TokenManager.replace(refreshedToken);
-//   return res.data.response;
-// });
-//
-// client.interceptors.request.use((request) => {
-//   request.headers.authorization = TokenManager.accessToken;
-//   return request;
-// });
+/**
+ * 에러 처리
+ * TODO :: 토큰 에러인 경우 업무 정의에 따라 alert 처리 여부등 결정하여 내용 추가
+ * @param config
+ * @param request
+ * @param response
+ * @param error
+ */
+const alertError = function (config: AxiosRequestConfig, request: any, response: AxiosResponse, error: Error) {
+  //Swal.close();
+
+  const errCode = response?.data?.code;
+  const errMsg = response?.data?.error;
+
+  Swal.fire({
+    icon: 'error',
+    title: 'Api Error',
+    html: `${errCode}: ${errMsg}`,
+    //imageUrl:
+    timer: 5000
+  }).then((r) => {});
+  console.log(response?.data);
+
+  // return Promise.reject({
+  // 	config,
+  // 	//message: errMsg,
+  // 	response,
+  // 	...error
+  // })
+};
+export default reqApi;

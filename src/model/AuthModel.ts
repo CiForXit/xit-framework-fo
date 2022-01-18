@@ -20,8 +20,8 @@ export interface ILoginUser {
   refreshToken?: string;
 }
 
-export interface ISocialProvider {
-  socialType: string;
+export interface IProvider {
+  providerType: string;
   src: string;
   comment: string;
 }

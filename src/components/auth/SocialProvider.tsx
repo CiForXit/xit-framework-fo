@@ -1,22 +1,21 @@
 import React, {MouseEvent} from 'react';
-import {ISocialProvider} from '../../model/AuthModel';
+import {IProvider} from '../../model/AuthModel';
 // @ts-ignore
 import styles from './SocialProvider.module.css';
-import AuthService from '../../service/AuthService';
 import {IAppProps} from '../../App';
 
 interface ISocialProps extends IAppProps {
-  social: ISocialProvider;
+  provider: IProvider;
 }
 
-const SocialProvider = ({authService, social}: ISocialProps) => {
+const SocialProvider = ({authService, provider}: ISocialProps) => {
   const onSocialLogin = (e: MouseEvent<HTMLButtonElement>) => {
-    authService.getSocialLoginUrl(social.socialType);
+    authService.getSocialLoginUrl(provider.providerType);
   };
 
   return (
     <button className={styles.button} onClick={onSocialLogin}>
-      <img className={styles.img} src={authService.getSocialImage(social.socialType)} alt={social.comment} />
+      <img className={styles.img} src={authService.getSocialImage(provider.providerType)} alt={provider.comment} />
     </button>
   );
 };
