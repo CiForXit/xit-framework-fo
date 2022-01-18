@@ -9,16 +9,6 @@
   background-color: adminWhite;
 }
 
-.list {
-  list-style: none;
-  display: flex;
-  padding: 0.5em;
-}
-
-.item {
-  margin-bottom: 0.5em;
-}
-
 .button {
   display: flex;
   justify-content: center;

@@ -1,6 +1,8 @@
 import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
 import Swal from 'sweetalert2';
 import XitCmm from '../common/XitCmm';
+import Alert from 'react-s-alert';
+//import Alert from 'react-s-alert';
 //import withReactContent from 'sweetalert2-react-content';
 
 //const SweetAlert = withReactContent(Swal);
@@ -38,13 +40,36 @@ export interface CustomInstance extends AxiosInstance {
 const reqApi: CustomInstance = axios.create({
   baseURL: process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : '',
   withCredentials: process.env.NODE_ENV === 'development', // 개발시만 사용 : crossdomain
-  timeout: 1000,
-  headers: {
-    'Content-Type': 'application/json'
-    //		authorization: accessToken
-  }
+  timeout: 1000
+  // headers: {
+  //   'Content-Type': 'application/json'
+  //   //		authorization: accessToken
+  // }
   //params: {key: key}
 });
+
+//const request: (options: object) => {
+// const headers = new Headers({
+//   'Content-Type': 'application/json',
+// })
+//
+// if(localStorage.getItem(ACCESS_TOKEN)) {
+//   headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
+// }
+//
+// const defaults = {headers: headers};
+// options = Object.assign({}, defaults, options);
+//
+// return fetch(options.url, options)
+// .then(response =>
+//   response.json().then(json => {
+//     if(!response.ok) {
+//       return Promise.reject(json);
+//     }
+//     return json;
+//   })
+// );
+//},
 
 /**
  * before axios request
@@ -89,11 +114,10 @@ reqApi.interceptors.response.use(
  * @param error
  */
 const alertError = function (config: AxiosRequestConfig, request: any, response: AxiosResponse, error: Error) {
-  //Swal.close();
-
   const errCode = response?.data?.code;
   const errMsg = response?.data?.error;
 
+  //Alert.error(`${errCode}: ${errMsg}`);
   Swal.fire({
     icon: 'error',
     title: 'Api Error',
