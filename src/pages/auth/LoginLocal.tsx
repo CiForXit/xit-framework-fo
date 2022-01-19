@@ -25,15 +25,14 @@ const Login = ({authService}: IAppProps) => {
     if (id === 'password') setPassword(value);
   };
 
-  const onLogin = (e: MouseEvent<HTMLButtonElement>) => {
-    if (!userId) return XitCmm.alertParam('사용자 ID를 입력해 주세요');
-    if (!password) return XitCmm.alertParam('비밀번호를 입력해 주세요');
-    // if (!userId)
-    //   Alert.error('사용자 ID를 입력해 주세요', {
-    //     timeout: 3000
-    //   });
-    // if (!password) Alert.warning('비밀번호를 입력해 주세요');
-    // return;
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    //if (!userId) return XitCmm.alertParam('사용자 ID를 입력해 주세요');
+    //if (!password) return XitCmm.alertParam('비밀번호를 입력해 주세요');
+    if (!userId) Alert.error('사용자 ID를 입력해 주세요');
+    if (!password) Alert.warning('비밀번호를 입력해 주세요');
+    return;
     authService
       .login({
         providerType: ProviderType.LOCAL,
@@ -42,7 +41,12 @@ const Login = ({authService}: IAppProps) => {
         token: '', // ?? alert('''')
         password: password
       })
-      .then((data) => (data ? console.log(`data: {}`, data) : ''));
+      .then((data) => {
+        localStorage.setItem('accessToken', 'data?.accessToken');
+        Alert.success("You're successfully logged in!");
+        //this.props.history.push("/");
+        //data ? console.log(`data: {}`, data) : '';
+      });
   };
 
   const logout = () => {
@@ -56,13 +60,38 @@ const Login = ({authService}: IAppProps) => {
   return (
     <section className={styles.login}>
       <h1>Login</h1>
-      <form>
-        <input id="userId" type="userId" placeholder="아이디" value={userId} onChange={handleChange} />
-        <input id="password" type="password" placeholder="비밀번호" value={password} onChange={handleChange} />
+      <form onSubmit={handleSubmit}>
+        <div className="form-item">
+          <input
+            type="text"
+            name="userId"
+            className="form-control"
+            placeholder="사용자 ID"
+            value={userId}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-item">
+          <input
+            type="password"
+            name="password"
+            className="form-control"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-item">
+          <button type="submit" className="btn btn-block btn-primary">
+            Login
+          </button>
+        </div>
+        {/*<input id="userId" type="userId" placeholder="아이디" value={userId} onChange={handleChange} />*/}
+        {/*<input id="password" type="password" placeholder="비밀번호" value={password} onChange={handleChange} />*/}
         <div className={styles.button}>
-          <Button variant="contained" onClick={onLogin}>
-            로그인
-          </Button>
+          {/*<Button variant="contained">로그인</Button>*/}
           <Button variant="contained" onClick={logout}>
             Logout
           </Button>

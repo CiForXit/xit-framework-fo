@@ -17,9 +17,18 @@ class AuthService {
 
   getSocialLoginUrl(providerType: string) {
     console.log(`socialType : ${providerType}`);
-    console.log(`${BACKEND_URL}/oauth2/authorization/${providerType}?redirect_uri=${OAUTH2_REDIRECT_URI}`);
-    return `${BACKEND_URL}/oauth2/authorization/${providerType}?redirect_uri=${OAUTH2_REDIRECT_URI}`;
+    console.log(`${BACKEND_URL}/oauth2/authorize/${providerType}?redirect_uri=${OAUTH2_REDIRECT_URI}`);
+    return `${BACKEND_URL}/oauth2/authorize/${providerType}?redirect_uri=${OAUTH2_REDIRECT_URI}`;
   }
+
+  async getCurrentUser() {
+    if (!localStorage.getItem('accessToken')) {
+      return Promise.reject('No access token set.');
+    }
+
+    //return await reqApi.post<IReqResponse>(LOGIN_URL, "");
+  }
+
   getSocialImage(providerType: string) {
     switch (providerType) {
       case 'google':
