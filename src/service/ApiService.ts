@@ -2,13 +2,14 @@ import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, Axios
 import Swal from 'sweetalert2';
 import XitCmm from '../common/XitCmm';
 import Alert from 'react-s-alert';
+import {IApiResponse} from '../model/ApiModel';
 //import Alert from 'react-s-alert';
 //import withReactContent from 'sweetalert2-react-content';
 
 //const SweetAlert = withReactContent(Swal);
 
 type CustomResponseFormat<T = any> = {
-  response: T;
+  response: T; //e<T>;
   refreshedToken?: string;
 };
 
@@ -48,29 +49,6 @@ const reqApi: CustomInstance = axios.create({
   //params: {key: key}
 });
 
-//const request: (options: object) => {
-// const headers = new Headers({
-//   'Content-Type': 'application/json',
-// })
-//
-// if(localStorage.getItem(ACCESS_TOKEN)) {
-//   headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-// }
-//
-// const defaults = {headers: headers};
-// options = Object.assign({}, defaults, options);
-//
-// return fetch(options.url, options)
-// .then(response =>
-//   response.json().then(json => {
-//     if(!response.ok) {
-//       return Promise.reject(json);
-//     }
-//     return json;
-//   })
-// );
-//},
-
 /**
  * before axios request
  */
@@ -86,7 +64,7 @@ reqApi.interceptors.request.use(
     return config;
   },
   ({config, request, response, ...error}) => {
-    console.log('========== ApiService.request error Data ==========');
+    console.error('========== ApiService.request error Data ==========');
     return alertError(config, request, response, error);
   }
 );
@@ -95,13 +73,25 @@ reqApi.interceptors.request.use(
  * after axios response
  */
 reqApi.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse) => {
     Swal.close();
+    if (!response.data.success) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Api Error',
+        html: `${response.data.message}`,
+        //imageUrl:
+        timer: 5000
+      }).then((r) => {});
+      console.log(response);
+    }
     return Promise.resolve(response.data);
   },
   ({config, request, response, ...error}) => {
-    console.log('========== ApiService.response Error Data ==========');
-    return alertError(config, request, response, error);
+    console.error('========== ApiService.response Error Data ==========');
+    alertError(config, request, response, error);
+    // error 데이타 return
+    return response.data;
   }
 );
 
@@ -114,8 +104,21 @@ reqApi.interceptors.response.use(
  * @param error
  */
 const alertError = function (config: AxiosRequestConfig, request: any, response: AxiosResponse, error: Error) {
-  const errCode = response?.data?.code;
-  const errMsg = response?.data?.error;
+  if (!response) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Api Error',
+      html: `시스템 에러~~~~~~~~~~~~`,
+      //imageUrl:
+      timer: 5000
+    }).then((r) => {});
+    return;
+  }
+
+  const errCode = response.data.code;
+  const errMsg = response.data.error;
+  console.error(`${errCode}: ${errMsg}`);
+  console.error('=================================');
 
   //Alert.error(`${errCode}: ${errMsg}`);
   Swal.fire({
@@ -125,7 +128,6 @@ const alertError = function (config: AxiosRequestConfig, request: any, response:
     //imageUrl:
     timer: 5000
   }).then((r) => {});
-  console.log(response?.data);
 
   // return Promise.reject({
   // 	config,

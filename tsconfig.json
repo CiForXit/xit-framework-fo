@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "downlevelIteration": true,  //  for/of 또는 Array Spread 연산자 사용시 Array타입만 사용하도록 강제
   },
   "include": [
     "src"

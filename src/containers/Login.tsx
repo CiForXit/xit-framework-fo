@@ -7,7 +7,7 @@ const Login = ({authService}: IAppProps) => {
   return (
     <div>
       <LoginLocal authService={authService} />
-      <LoginSocial authService={authService} />
+      {/*<LoginSocial authService={authService} />*/}
     </div>
   );
 };

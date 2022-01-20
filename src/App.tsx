@@ -43,9 +43,9 @@ const App = ({authService}: IAppProps) => {
     Alert.success("You're safely logged out!");
   };
 
-  useEffect(() => {
-    loadCurrentlyLoggedInUser();
-  }, [loadCurrentlyLoggedInUser]);
+  // useEffect(() => {
+  //   loadCurrentlyLoggedInUser();
+  // }, [loadCurrentlyLoggedInUser]);
 
   return (
     <div className={styles.app}>
@@ -54,11 +54,8 @@ const App = ({authService}: IAppProps) => {
 
         <Routes>
           <Route path="/" element={<Login authService={authService} />} />
-          <PrivateRoute path="/profile" authenticated={authenticated} currentUser={currentUser} element={Profile} />
-          {/*<Route*/}
-          {/*  path="/signup"*/}
-          {/*  render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>*/}
-          <Route path="/oauth2/redirect/*" element={<OAuth2RedirectHandler />} />
+          {/*<PrivateRoute path="/profile" authenticated={authenticated} currentUser={currentUser} element={Profile} />*/}
+          {/*<Route path="/oauth2/redirect/*" element={<OAuth2RedirectHandler />} />*/}
           <Route element={NotFound} />
         </Routes>
         <Footer />

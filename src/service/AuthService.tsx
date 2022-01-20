@@ -1,14 +1,20 @@
 import {IUser} from '../model/AuthModel';
 import reqApi from './ApiService';
 import {LOGIN_URL} from '../common/ApiUrl';
-import {IReqResponse} from '../model/ApiModel';
+import {IApiResponse} from '../model/ApiModel';
 
 const BACKEND_URL = process.env.REACT_APP_API_URL;
 const OAUTH2_REDIRECT_URI = 'http://localhost:3000/oauth2/redirect'; //process.env.REACT_OAUTH2_REDIRECT_URI;
 
+export interface ILoginReponse {
+  grantType: string;
+  accessToken: string;
+  refreshToken: string;
+}
+
 class AuthService {
-  async login(user: IUser) {
-    return await reqApi.post<IReqResponse>(LOGIN_URL, user);
+  async login(user: IUser): Promise<IApiResponse<ILoginReponse>> {
+    return await reqApi.post<IApiResponse<ILoginReponse>>(LOGIN_URL, user);
     //.then(r => console.log(r))
     //.catch(e => {
     //  console.log(e)
