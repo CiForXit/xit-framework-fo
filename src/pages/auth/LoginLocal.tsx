@@ -2,7 +2,7 @@
 import styles from './LoginLocal.module.css';
 import React, {FormEvent, useState} from 'react';
 
-import {IUser, ProviderType} from '../../model/AuthModel';
+import {REFRESH_TOKEN_NAME, ACCESS_TOKEN_NAME, IUser, ProviderType} from '../../model/AuthModel';
 import {IAppProps} from '../../App';
 import XitCmm from '../../common/XitCmm';
 import Alert from 'react-s-alert';
@@ -47,8 +47,8 @@ const Login = ({authService}: IAppProps) => {
         }
         if (res.data) {
           Alert.success(`Success ${userId} log in!`);
-          localStorage.setItem('accessToken', res.data.accessToken);
-          XitCmm.setCookie('refreshToken', res.data.refreshToken);
+          localStorage.setItem(ACCESS_TOKEN_NAME, `${res.data.grantType} ${res.data.accessToken}`);
+          XitCmm.setCookie(REFRESH_TOKEN_NAME, res.data.refreshToken);
         }
         //this.props.history.push("/");
         //data ? console.log(`data: {}`, data) : '';
@@ -57,8 +57,8 @@ const Login = ({authService}: IAppProps) => {
 
   const logout = () => {
     Alert.success(`Success ${userId} log out!`);
-    localStorage.removeItem('accessToken');
-    XitCmm.removeCookie('accessToken');
+    localStorage.removeItem(ACCESS_TOKEN_NAME);
+    XitCmm.removeCookie(ACCESS_TOKEN_NAME);
     setUserId('');
     setPassword('');
   };

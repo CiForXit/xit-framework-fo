@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Navigate} from 'react-router-dom';
+import {ACCESS_TOKEN_NAME} from '../../model/AuthModel';
 //import { Redirect } from 'react-router-dom'
 
 class OAuth2RedirectHandler extends Component {
@@ -16,7 +17,7 @@ class OAuth2RedirectHandler extends Component {
     const error = this.getUrlParameter('error');
 
     if (token) {
-      localStorage.setItem('accessToken', token);
+      localStorage.setItem(ACCESS_TOKEN_NAME, token);
       return (
         <Navigate
           to={{

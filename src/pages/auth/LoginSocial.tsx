@@ -2,7 +2,7 @@
 import styles from './LoginSocial.module.css';
 import React, {MouseEvent, useState} from 'react';
 //import GoogleLogin, {GoogleLogout} from 'react-google-login';
-import {IUser, IProvider, ProviderType} from '../../model/AuthModel';
+import {IUser, IProvider, ProviderType, ACCESS_TOKEN_NAME} from '../../model/AuthModel';
 import {IAppProps} from '../../App';
 import {soicial as tData} from '../../common/js/social_provider';
 import SocialProvider from '../../components/auth/SocialProvider';
@@ -24,7 +24,7 @@ const LoginSocial = ({authService}: IAppProps) => {
     if (!response) return;
     console.log(`googleId : [${response.googleId}]`);
     console.log(`tokenId : [${response.tokenId}]`);
-    console.log(`accessToken : [${response.accessToken}]`);
+    console.log(`${ACCESS_TOKEN_NAME} : [${response.accessToken}]`);
     console.log(`tokenObj : `, response.tokenObj);
     setLoginUser({
       providerType: ProviderType.GOOGLE,

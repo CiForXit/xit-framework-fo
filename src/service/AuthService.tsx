@@ -1,4 +1,4 @@
-import {IUser} from '../model/AuthModel';
+import {ACCESS_TOKEN_NAME, IUser} from '../model/AuthModel';
 import reqApi from './ApiService';
 import {LOGIN_URL} from '../common/ApiUrl';
 import {IApiResponse} from '../model/ApiModel';
@@ -28,7 +28,7 @@ class AuthService {
   }
 
   async getCurrentUser() {
-    if (!localStorage.getItem('accessToken')) {
+    if (!localStorage.getItem(ACCESS_TOKEN_NAME)) {
       return Promise.reject('No access token set.');
     }
 

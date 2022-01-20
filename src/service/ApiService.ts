@@ -44,7 +44,7 @@ const reqApi: CustomInstance = axios.create({
   timeout: 1000
   // headers: {
   //   'Content-Type': 'application/json'
-  //   //		authorization: accessToken
+  //   //		AUTH_HEADER_NAME: accessToken
   // }
   //params: {key: key}
 });

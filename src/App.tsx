@@ -15,6 +15,7 @@ import OAuth2RedirectHandler from './components/auth/OAuth2RedirectHandler';
 import Login from './containers/Login';
 import PrivateRoute from './pages/auth/PrivateRoute';
 import Profile from './components/auth/Profile';
+import {ACCESS_TOKEN_NAME} from './model/AuthModel';
 
 //export type TAuthservice = AuthService;
 
@@ -37,7 +38,7 @@ const App = ({authService}: IAppProps) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem(ACCESS_TOKEN_NAME);
     setCurrentUser(null);
     setAuthenticated(false);
     Alert.success("You're safely logged out!");
