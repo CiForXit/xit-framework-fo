@@ -107,27 +107,6 @@ const XitCmm = {
    * @param initalValue
    * @param validator
    */
-  // useInput: (initialState: string = '', validator?: (value: string) => boolean) => {
-  //   const [value, setValue] = useState(initialState);
-  //   const onChange = (e: {target: {value: string}}) => {
-  //     if (validator === undefined || validator(value)) {
-  //       setValue(value);
-  //     }
-  //   };
-  //   return [value, setValue, onChange] as [string, typeof setValue, onChangeType];
-  // },
-  // useInput: (initialState: string = '', validator?: (value: string) => boolean) => {
-  //   const [value, setValue] = useState(initialState);
-  //   //let handler: (e: {target: {value: string}}) => void;
-  //   const handler = useCallback((e: {target: {value: string}}) => {
-  //     if (validator === undefined || validator(value)) {
-  //       setValue(value);
-  //     }
-  //   }, []);
-  //
-  //   return [value, handler] as [string, onChangeType];
-  //   //return [value, handler, setValue] as [string, onChangeType, typeof setValue];
-  // },
 
   useInput<T>(
     initalValue: T,
@@ -231,23 +210,6 @@ const XitCmm = {
       }
     }
   },
-
-  /**
-   * Returns a cookie value if a name is specified. Otherwise returns the entire cookies as an object
-   * @param [name] - The name of the cookie to fetch the value for. Returns the entire map of cookies if not specified
-   * @returns {string|Object} - The value of the cookie specified by `name` if specified. Otherwise returns a name value map of the available cookies
-   */
-  // getCookie: (name: string) => {
-  //   const cookies = document.cookie.split(';')
-  //   .reduce((acc, cookieString) => {
-  //     const [key, value] = cookieString.split('=').map(s => s.trim());
-  //     if (key && value) {
-  //       acc[key] = decodeURIComponent(value);
-  //     }
-  //     return acc;
-  //   }, {});
-  //   return name ? cookies[name] || '' : cookies;
-  // },
 
   /**
    *

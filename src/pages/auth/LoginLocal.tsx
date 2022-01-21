@@ -30,7 +30,7 @@ const Login = ({authService}: IAppProps) => {
 
     //if (!userId) return XitCmm.alertParam('사용자 ID를 입력해 주세요');
     //if (!password) return XitCmm.alertParam('비밀번호를 입력해 주세요');
-    if (!userId) return Alert.warning('사용자 ID를 입력해 주세요');
+    if (!userId) return Alert.error('사용자 ID를 입력해 주세요');
     if (!password) return Alert.warning('비밀번호를 입력해 주세요');
     //return;
     authService
