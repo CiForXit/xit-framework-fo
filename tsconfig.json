@@ -1,27 +1,27 @@
 {
+  "typeRoots": ["./node_modules/@types"],
   "compilerOptions": {
-    "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "compilerOptions": {
+      "baseUrl": "src"
+    },
+    "includes": ["src"],
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "rootDirs": ["src"],
+    "baseUrl": "src",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "downlevelIteration": true,  //  for/of 또는 Array Spread 연산자 사용시 Array타입만 사용하도록 강제
+    "jsx": "preserve"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "scripts"]
 }

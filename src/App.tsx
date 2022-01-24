@@ -1,20 +1,20 @@
 // @ts-ignore
 import styles from './App.module.css';
-import LoginLocal from './pages/auth/LoginLocal';
-import AuthService from './service/AuthService';
-import Header from './components/layout/Header';
+import LoginLocal from './components/molecules/login/LoginLocal';
+import AuthService from './services/AuthService';
+import Header from './components/atoms/Header';
 import React, {useEffect, useState} from 'react';
-import Footer from './components/layout/Footer';
-import LoginSocial from './pages/auth/LoginSocial';
+import Footer from './components/atoms/Footer';
+import LoginSocial from './components/molecules/login/LoginSocial';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import NotFound from './components/common/NotFound';
-import OAuth2RedirectHandler from './components/auth/OAuth2RedirectHandler';
-import Login from './containers/Login';
-import PrivateRoute from './pages/auth/PrivateRoute';
-import Profile from './components/auth/Profile';
+import NotFound from './components/atoms/NotFound';
+import OAuth2RedirectHandler from './services/OAuth2RedirectHandler';
+import Login from './components/organisms/Login';
+import PrivateRoute from './components/organisms/PrivateRoute';
+import Profile from './components/molecules/login/Profile';
 import {ACCESS_TOKEN_NAME} from './model/AuthModel';
 
 //export type TAuthservice = AuthService;
