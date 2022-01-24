@@ -25,6 +25,7 @@
     "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1",
     "styled-tools": "^1.7.1",
+    "sweetalert2": "^11.3.6",
     "tui-editor": "^1.4.9"
   },
   "devDependencies": {
@@ -117,5 +118,4 @@
       "git add"
     ]
   }
-
 }
