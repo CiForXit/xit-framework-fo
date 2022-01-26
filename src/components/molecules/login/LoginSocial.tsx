@@ -1,48 +1,46 @@
-// @ts-ignore
 import styles from './LoginSocial.module.css';
-import React, {MouseEvent, useState} from 'react';
-//import GoogleLogin, {GoogleLogout} from 'react-google-login';
-import {IUser, IProvider, ProviderType, ACCESS_TOKEN_NAME} from '../../../model/AuthModel';
-import {IAppProps} from '../../../App';
-import {soicial as tData} from '../../../constants/social_provider';
+import React from 'react';
+import {IProvider} from 'model/AuthModel';
+import {IAppProps} from 'App';
+import {soicial as tData} from 'constants/social_provider';
 import SocialProvider from './SocialProvider';
-import Button from '@mui/material/Button';
-import {TextField} from '@mui/material';
-import XitCmm from '../../../utils/XitCmm';
+// import Button from '@mui/material/Button';
+// import {TextField} from '@mui/material';
+// import XitCmm from '../../../utils/XitCmm';
 
-interface ILoginProps {
-  user: IUser;
-  login: (user: IUser) => void;
-}
+// interface ILoginProps {
+//   user: IUser;
+//   login: (user: IUser) => void;
+// }
 
 const LoginSocial = ({authService}: IAppProps) => {
-  const [loginUser, setLoginUser] = useState<IUser>();
+  //const [loginUser, setLoginUser] = useState<IUser>();
 
-  const clientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
-
-  const responseGoogle = (response: any) => {
-    if (!response) return;
-    console.log(`googleId : [${response.googleId}]`);
-    console.log(`tokenId : [${response.tokenId}]`);
-    console.log(`${ACCESS_TOKEN_NAME} : [${response.accessToken}]`);
-    console.log(`tokenObj : `, response.tokenObj);
-    setLoginUser({
-      providerType: ProviderType.GOOGLE,
-      userId: response.googleId,
-      picture: ''
-    });
-    //loginUser && authService.login(loginUser);
-    //setLoginUser(undefined);
-    const res = authService.login(loginUser!);
-    console.log(res);
-  };
-  const responseErrorGoogle = (response: any) => {
-    console.log('responseErrorGoogle ::' + response);
-  };
-
-  const onSocialLogin = (e: MouseEvent<HTMLButtonElement>, providerType: string) => {
-    authService.getSocialLoginUrl(providerType);
-  };
+  // const clientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
+  //
+  // const responseGoogle = (response: any) => {
+  //   if (!response) return;
+  //   console.log(`googleId : [${response.googleId}]`);
+  //   console.log(`tokenId : [${response.tokenId}]`);
+  //   console.log(`${ACCESS_TOKEN_NAME} : [${response.accessToken}]`);
+  //   console.log(`tokenObj : `, response.tokenObj);
+  //   setLoginUser({
+  //     providerType: ProviderType.GOOGLE,
+  //     userId: response.googleId,
+  //     picture: ''
+  //   });
+  //   //loginUser && authService.login(loginUser);
+  //   //setLoginUser(undefined);
+  //   const res = authService.login(loginUser!);
+  //   console.log(res);
+  // };
+  // const responseErrorGoogle = (response: any) => {
+  //   console.log('responseErrorGoogle ::' + response);
+  // };
+  //
+  // const onSocialLogin = (e: MouseEvent<HTMLButtonElement>, providerType: string) => {
+  //   authService.getSocialLoginUrl(providerType);
+  // };
 
   return (
     <section className={styles.social}>

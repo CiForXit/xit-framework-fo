@@ -1,5 +1,4 @@
-import React, {memo} from 'react';
-// @ts-ignore
+import React from 'react';
 import styles from './Header.module.css';
 
 const Header = (/*{onLogout}*/) => {

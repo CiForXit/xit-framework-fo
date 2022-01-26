@@ -1,5 +1,4 @@
 import React, {memo} from 'react';
-// @ts-ignore
 import styles from './Footer.module.css';
 
 const Footer = memo(() => (
