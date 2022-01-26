@@ -34,7 +34,7 @@ function FormInput({
   const { name } = labelProps;
   return (
     <S.FormInputContainer>
-      <Label name={name} {...labelProps} />
+      <Label {...labelProps} />
       <S.FormInput invalid={invalid} {...props} />
       <S.FormCaption invalid={invalid} data-testid={'formcaption'}>
         {captionContent}
