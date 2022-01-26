@@ -1,10 +1,6 @@
 {
   "typeRoots": ["./node_modules/@types"],
   "compilerOptions": {
-    "compilerOptions": {
-      "baseUrl": "src"
-    },
-    "includes": ["src"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
