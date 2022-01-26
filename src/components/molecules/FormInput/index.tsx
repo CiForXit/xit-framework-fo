@@ -31,7 +31,7 @@ function FormInput({
   labelProps,
   ...props
 }: Props): React.ReactElement {
-  const { name } = labelProps;
+  //const { name } = labelProps;
   return (
     <S.FormInputContainer>
       <Label {...labelProps} />
