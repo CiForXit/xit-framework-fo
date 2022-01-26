@@ -4,7 +4,7 @@ module.exports = ({config, mode}) => {
   config.plugins.push(new Dotenv());
 
   config.module.rules.push({
-    test: /\.tsx?$/,
+    test: /\.ts?x$/,
     use: [
       {
         loader: require.resolve('babel-loader'),

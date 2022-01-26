@@ -54,6 +54,7 @@
     "@types/react-icons": "^3.0.0",
     "@types/react-router-dom": "^5.3.3",
     "@types/storybook__react": "^4.0.2",
+    "@types/storybook__addon-info": "^5.2.4",
     "@types/styled-components": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",

@@ -21,7 +21,7 @@ addParameters({
     panelPosition: 'bottom',
     sidebarAnimations: true,
     showPanel: true,
-    hierarchySeparator: /\/|\./,
+    hierarchySeparator: /[\/.]/,
     hierarchyRootSeparator: '|',
   },
   info: {

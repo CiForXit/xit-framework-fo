@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-export default story => (
+export default (story: any) => (
   <Router>
-    <Switch>
+    <Routes>
       <Route path="*">{story()}</Route>
-    </Switch>
+    </Routes>
   </Router>
 );
