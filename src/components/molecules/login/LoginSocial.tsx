@@ -1,8 +1,8 @@
 import styles from './LoginSocial.module.css';
 import React from 'react';
-import {IProvider} from 'model/AuthModel';
+import {IProvider} from 'types/AuthModel';
 import {IAppProps} from 'App';
-import {soicial as tData} from 'constants/social_provider';
+import {soicial as tData} from 'commons/constants/social_provider';
 import SocialProvider from './SocialProvider';
 // import Button from '@mui/material/Button';
 // import {TextField} from '@mui/material';

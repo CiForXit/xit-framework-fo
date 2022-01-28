@@ -1,5 +1,5 @@
 import React, {MouseEvent} from 'react';
-import {IProvider} from '../../../model/AuthModel';
+import {IProvider} from '../../../types/AuthModel';
 // @ts-ignore
 import styles from './SocialProvider.module.css';
 import {IAppProps} from '../../../App';

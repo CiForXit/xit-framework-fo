@@ -2,12 +2,12 @@
 import styles from './LoginLocal.module.css';
 import React, {FormEvent, useState} from 'react';
 
-import {REFRESH_TOKEN_NAME, ACCESS_TOKEN_NAME, IUser, ProviderType} from '../../../model/AuthModel';
+import {REFRESH_TOKEN_NAME, ACCESS_TOKEN_NAME, IUser, ProviderType} from '../../../types/AuthModel';
 import {IAppProps} from '../../../App';
 import XitCmm from '../../../utils/XitCmm';
 import Alert from 'react-s-alert';
-import {IApiResponse} from '../../../model/ApiModel';
-import {ILoginReponse} from '../../../services/AuthService';
+import {IApiResponse} from '../../../types/ApiModel';
+import {ILoginReponse} from '../../../apis/AuthService';
 
 const Login = ({authService}: IAppProps) => {
   const [loginUser, setLoginUser] = useState<IUser>();

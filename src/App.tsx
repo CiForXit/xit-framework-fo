@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import AuthService from './services/AuthService';
+import AuthService from './apis/AuthService';
 import Header from './components/atoms/Header';
 import React, {useState} from 'react';
 import Footer from './components/atoms/Footer';

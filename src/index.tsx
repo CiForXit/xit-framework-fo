@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.module.css';
 import App from './App';
 
-import AuthService from './services/AuthService';
+import AuthService from './apis/AuthService';
 
 const authService = new AuthService();
 

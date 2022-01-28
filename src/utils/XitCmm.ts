@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import React, {ChangeEvent, Dispatch, SetStateAction, useCallback, useState} from 'react';
 import axios, {AxiosResponse} from 'axios';
-import {IApiResponse} from '../model/ApiModel';
+import {IApiResponse} from '../types/ApiModel';
 import Alert from 'react-s-alert';
 
 const XitCmm = {

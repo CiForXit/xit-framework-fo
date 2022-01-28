@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Navigate} from 'react-router-dom';
-import {ACCESS_TOKEN_NAME} from '../model/AuthModel';
+import {ACCESS_TOKEN_NAME} from '../types/AuthModel';
 //import { Redirect } from 'react-router-dom'
 
 class OAuth2RedirectHandler extends Component {
