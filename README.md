@@ -21,3 +21,5 @@ declare module '*.svg' {
 2. Make sure that the ES Lint settings are set to Automatic ES Lint Configuration
 3. restart webstorm
 ```
+
+### [typescript 에러 참조](https://velog.io/@edie_ko/React-TypeScript-JavaScript에서-TypeScript로-변환-에러-선물-세트)

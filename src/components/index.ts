@@ -16,6 +16,7 @@ export { default as TuiViewer } from './atoms/TuiViewer';
 export { default as KakaoMap } from './atoms/KakaoMap';
 export { default as TimePicker } from './atoms/TimePicker';
 
+//TODO :: storybook 에러 발생 하는 component comment 처리
 //export { default as Card } from './molecules/Card';
 export { default as Counter } from './molecules/Counter';
 export { default as FormInput } from './molecules/FormInput';
@@ -30,14 +31,14 @@ export { default as DropDown } from './molecules/DropDown';
 export { default as DateTimePicker } from './molecules/DateTimePicker';
 
 //export { default as CardGrid } from './organisms/CardGrid';
-// export { default as EventHeader } from './organisms/EventHeader';
+export { default as EventHeader } from './organisms/EventHeader';
 export { default as Footer } from './organisms/Footer';
 export { default as Header } from './organisms/Header';
-// export { default as MainBanner } from './organisms/MainBanner';
-// export { default as Place } from './organisms/Place';
-// export { default as SignUpForm } from './organisms/SignUpForm';
-// export { default as Ticket } from './organisms/Ticket';
-// export { default as TicketBox } from './organisms/TicketBox';
+export { default as MainBanner } from './organisms/MainBanner';
+export { default as Place } from './organisms/Place';
+export { default as SignUpForm } from './organisms/SignUpForm';
+export { default as Ticket } from './organisms/Ticket';
+export { default as TicketBox } from './organisms/TicketBox';
 export { default as CounterBox } from './organisms/CounterBox';
 export { default as EventSection } from './organisms/EventSection';
 export { default as CreateTicketForm } from './organisms/CreateTicketForm';

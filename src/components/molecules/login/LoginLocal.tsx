@@ -4,7 +4,7 @@ import React, {FormEvent, useState} from 'react';
 
 import {REFRESH_TOKEN_NAME, ACCESS_TOKEN_NAME, IUser, ProviderType} from '../../../types/AuthModel';
 import {IAppProps} from '../../../App';
-import XitCmm from '../../../utils/XitCmm';
+import XitCmm from '../../../commons/XitCmm';
 import Alert from 'react-s-alert';
 import {IApiResponse} from '../../../types/ApiModel';
 import {ILoginReponse} from '../../../apis/AuthService';
