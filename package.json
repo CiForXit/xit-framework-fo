@@ -9,10 +9,20 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "cypress": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:dev": "start-server-and-test start http://localhost:3000 cypress:open",
+    "cypress:record": "cypress run --record --parallel",
+    "test": "react-scripts test --coverage --verbose --watchAll=false && yarn test:cypress",
+    "test:watch": "react-scripts test --coverage --verbose",
+    "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
+    "lint": "tsc --noEmit && eslint . --cache --ext .ts,.tsx",
+    "lint:fix": "tsc --noEmit && eslint . --cache --fix --ext .ts,.tsx",
+    "precommit": "tsc --noEmit && lint-staged",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,md}\""
   },
   "dependencies": {
     "@types/react-dates": "^17.1.5",
