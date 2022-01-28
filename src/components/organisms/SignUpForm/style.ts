@@ -3,7 +3,7 @@ import { ifProp, palette, theme } from 'styled-tools';
 import { Input } from 'components';
 
 interface Props {
-	invalid?: boolean;
+  invalid?: boolean;
 }
 export const SignUpFormContainer = styled.div``;
 
