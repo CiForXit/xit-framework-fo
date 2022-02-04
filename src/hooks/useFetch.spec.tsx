@@ -43,7 +43,7 @@ describe('Hooks', () => {
     mount(<MockComponent />);
 
     // then
-    await new Promise(resolve => {
+    await new Promise<void>(resolve => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {
@@ -83,7 +83,7 @@ describe('Hooks', () => {
     mount(<MockComponent />);
 
     // then
-    await new Promise(resolve => {
+    await new Promise<void>(resolve => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {

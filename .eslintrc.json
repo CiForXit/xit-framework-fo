@@ -4,8 +4,10 @@
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
-      "impliedStrict": true
-    }
+      "impliedStrict": true,
+      "jsx": true
+    },
+    "warnOnUnsupportedTypeScriptVersion": false
   },
   "extends": [
     "react-app",
@@ -13,7 +15,7 @@
     "prettier/@typescript-eslint",
     "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "jest", "cypress"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "jest", "cypress"],
   "env": {
     "es6": true,
     "node": true,
@@ -35,6 +37,17 @@
     "cypress/no-assigning-return-values": "error",
     "cypress/no-unnecessary-waiting": "off",
     "cypress/assertion-before-screenshot": "warn",
-    "no-unused-expressions": 0
-  }
+    "no-unused-expressions": 0,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/<rule>": ["<setting>"]
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+      }
+    }
+  ]
 }

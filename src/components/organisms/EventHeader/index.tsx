@@ -83,7 +83,8 @@ function useEventBtn(
         });
       }
 
-      delay > 0 && setTimerId(setTimeout(() => setTime(salesStartAt), delay));
+      //TODO :: 적용 필요
+      //delay > 0 && setTimerId(setTimeout(() => setTime(salesStartAt), delay));
     }
 
     setTime(moment(salesStartAt));

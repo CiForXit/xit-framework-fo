@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useCookies } from 'react-cookie';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import MyPageTemplate from './template';
 import { LNB, CardGrid, EventSection } from 'components';
@@ -57,7 +57,7 @@ function MyPage(): React.ReactElement {
   const useAction = useContext(MyPageActionContext);
   const [, , removeCookie] = useCookies(['cookie-name']);
   const { accountDispatcher } = useContext(UserAccountAction);
-  const history = useHistory();
+  const history = useNavigate();
 
   function routeByTabIndex(tabIndex: number): void {
     const routeActions = [
@@ -76,10 +76,10 @@ function MyPage(): React.ReactElement {
         currentTabIndex.current = MY_CREATED_EVENT_TAB_INDEX;
       },
       (): void => {
-        removeCookie('UID');
+ //       removeCookie('UID');
         accountDispatcher({ type: 'LOGOUT' });
         alert(MY_PAGE_LOGOUT_ALERT);
-        history.push('/');
+        history('/');
       },
     ];
 
@@ -146,10 +146,10 @@ function MyPage(): React.ReactElement {
     if (pathname === historyPath.route) return;
 
     if (method === HISTORY_METHOD_PUSH) {
-      history.push(route);
+      history(route);
       return;
     }
-    history.replace(route);
+    history(route, {replace: true});
   }, [historyPath, history]);
 
   useEffect(() => {

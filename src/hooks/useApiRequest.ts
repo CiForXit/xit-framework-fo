@@ -1,5 +1,5 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 export interface FetchProps<T> {
   type: '' | 'REQUEST' | 'SUCCESS' | 'FAILURE';
@@ -61,7 +61,7 @@ export default function useApiRequest<T>(
   const [result, dispatch] = useReducer<Reducer<T>>(reducer, initialState);
   useEffect(() => {
     if (result.type === REQUEST) {
-      fetchData<T>(apiRequest, dispatch, result.body);
+      fetchData<T>(apiRequest, dispatch, result.body).then(r => {});
     }
   }, [result, apiRequest]);
 

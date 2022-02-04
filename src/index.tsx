@@ -5,11 +5,11 @@ import App from './App';
 
 import AuthService from './apis/AuthService';
 
-const authService = new AuthService();
+//const authService = new AuthService();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={authService} />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

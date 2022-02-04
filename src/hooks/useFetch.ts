@@ -46,7 +46,7 @@ export default function useFetch<T>(
         if (status === OK) {
           dispatch({ type: 'success', data, status });
         }
-      } catch (err) {
+      } catch (err: any) {
         if (err.response && err.response.status === NOT_FOUND)
           return dispatch({ type: 'failure', err, status: NOT_FOUND });
         if (!retry)

@@ -17,20 +17,20 @@ export { default as KakaoMap } from './atoms/KakaoMap';
 export { default as TimePicker } from './atoms/TimePicker';
 
 //TODO :: storybook 에러 발생 하는 component comment 처리
-//export { default as Card } from './molecules/Card';
+export { default as Card } from './molecules/Card';
 export { default as Counter } from './molecules/Counter';
 export { default as FormInput } from './molecules/FormInput';
-//export { default as FormItem } from './molecules/FormItem';
+export { default as FormItem } from './molecules/FormItem';
 export { default as IconBtn } from './molecules/IconBtn';
 export { default as IconLabel } from './molecules/IconLabel';
 export { default as ImgBtn } from './molecules/ImgBtn';
 export { default as StepList } from './molecules/StepList';
-//export { default as SearchMap } from './molecules/SearchMap';
+export { default as SearchMap } from './molecules/SearchMap';
 export { default as LNB } from './molecules/LNB';
 export { default as DropDown } from './molecules/DropDown';
 export { default as DateTimePicker } from './molecules/DateTimePicker';
 
-//export { default as CardGrid } from './organisms/CardGrid';
+export { default as CardGrid } from './organisms/CardGrid';
 export { default as EventHeader } from './organisms/EventHeader';
 export { default as Footer } from './organisms/Footer';
 export { default as Header } from './organisms/Header';
