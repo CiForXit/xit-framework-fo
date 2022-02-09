@@ -1,5 +1,5 @@
 export default {
-  HOME: '/',
+  MAIN: '/main',
   SIGNUP: '/signup',
   LOGIN: '/login',
   LOGOUT: '/logout',
@@ -8,5 +8,5 @@ export default {
   EVENT_DETAIL: '/events',
   MYPAGE_TICKETS: '/my/tickets',
   MYPAGE_CREATED_EVENTS: '/my/events',
-  MYPAGE_TICKETS_EVENT: '/my/tickets/event',
+  MYPAGE_TICKETS_EVENT: '/my/tickets/event'
 };

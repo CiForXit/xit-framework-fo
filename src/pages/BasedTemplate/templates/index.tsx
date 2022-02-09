@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 import ROUTES from 'commons/constants/routes';
-import { Header, Footer, Divider, Loading } from 'components';
+import {Divider, Footer, Header, Loading} from 'components';
 
 interface Props {
   loading?: boolean;
@@ -15,7 +15,7 @@ function BasedTemplate({
   children,
   loading = false,
   internalServerError = false,
-  hasHeaderLine = false,
+  hasHeaderLine = false
 }: Props): React.ReactElement {
   const conditionalRender = () => {
     if (internalServerError)
@@ -23,7 +23,7 @@ function BasedTemplate({
         <S.InternalServerError
           alt="500 Internal Server Error"
           src="https://kr.object.ncloudstorage.com/bookus/internalServerError.png"
-          to={ROUTES.HOME}
+          to={ROUTES.MAIN}
         />
       );
     if (loading) return <Loading />;

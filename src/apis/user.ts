@@ -1,4 +1,4 @@
-import { mainAxios } from 'libs/axios';
+import {mainAxios} from 'libs/axios';
 
 export const createUser = (
   id: number,
@@ -6,7 +6,7 @@ export const createUser = (
   email: string,
   firstName: string,
   lastName: string,
-  phoneNumber: string,
+  phoneNumber: string
 ) =>
   mainAxios.post('/users', {
     id,
@@ -14,20 +14,20 @@ export const createUser = (
     email,
     firstName,
     lastName,
-    phoneNumber,
+    phoneNumber
   });
 
 export const getBoughtTicketEvent = () =>
   mainAxios.get('/users/tickets', {
-    headers: { Accept: 'application/json' },
+    headers: {Accept: 'application/json'}
   });
 
 export const getCreatedEvents = () =>
   mainAxios.get('/users/events', {
-    headers: { Accept: 'application/json' },
+    headers: {Accept: 'application/json'}
   });
 
 export const refundBoughtTicket = (ticketId: number) =>
   mainAxios.delete('/users/ticket', {
-    data: { ticketId },
+    data: {ticketId}
   });

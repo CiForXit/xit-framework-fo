@@ -31,18 +31,28 @@ function Btn({
 }: Props): React.ReactElement {
   const customprops = {
     fit,
-    grow
+    grow,
   };
 
   if (to) {
     return (
-      <S.StyledLink styletype={styletype} to={to} customprops={customprops} {...props}>
+      <S.StyledLink
+        styletype={styletype}
+        to={to}
+        customprops={customprops}
+        {...props}
+      >
         {children}
       </S.StyledLink>
     );
   } else if (href) {
     return (
-      <S.Anchor styletype={styletype} href={href} customprops={customprops} {...props}>
+      <S.Anchor
+        styletype={styletype}
+        href={href}
+        customprops={customprops}
+        {...props}
+      >
         {children}
       </S.Anchor>
     );

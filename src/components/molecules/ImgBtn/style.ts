@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { palette } from 'styled-tools';
+import {palette} from 'styled-tools';
 
-import Btn from 'components/atoms/Btn';
-import Img from 'components/atoms/Img';
+import {Btn, Img} from 'components';
 
 export const Button = styled(Btn)`
   display: flex;

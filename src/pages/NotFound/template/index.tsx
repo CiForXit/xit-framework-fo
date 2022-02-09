@@ -6,7 +6,7 @@ interface Props {
   content: React.ReactNode;
 }
 
-function NotFoundTemplate({ content }: Props): React.ReactElement {
+function NotFoundTemplate({content}: Props): React.ReactElement {
   return (
     <BasedTemplate>
       <S.ContentContainer>{content}</S.ContentContainer>

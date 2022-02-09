@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import { Label } from 'components';
+import {Label} from 'components';
 
 export interface Props {
   label: string;
@@ -19,7 +19,7 @@ function FormInput({
   required = false,
   captionContent = '',
   direction = 'row',
-  children,
+  children
 }: Props): React.ReactElement {
   return (
     <S.FormItemContainer direction={direction}>

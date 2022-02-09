@@ -1,6 +1,8 @@
 import React from 'react';
 
 import * as S from './style';
+import Img from 'components/atoms/Img';
+import Btn from 'components/atoms/Btn';
 
 interface Props {
   /** img src */
@@ -13,11 +15,15 @@ interface Props {
   href?: string;
 }
 
-function ImgBtn({ src, alt, ...props }: Props): React.ReactElement {
+function ImgBtn({src, alt, ...props}: Props): React.ReactElement {
   return (
-    <S.Button {...props}>
-      <S.Image alt={alt} src={src} />
-    </S.Button>
+    // <S.Button {...props}>
+    //   <S.Image alt={alt} src={src} />
+    // </S.Button>
+
+    <Btn {...props}>
+      <Img alt={alt} src={src} />
+    </Btn>
   );
 }
 

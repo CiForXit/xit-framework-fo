@@ -1,8 +1,11 @@
 {
-  "typeRoots": ["./node_modules/@types"],
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -10,15 +13,20 @@
     "strict": true,
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "rootDirs": ["src"],
-    "baseUrl": "src",
-    "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "downlevelIteration": true,  //  for/of 또는 Array Spread 연산자 사용시 Array타입만 사용하도록 강제,
+    "experimentalDecorators": true,  // decorators 사용 - mobx,
+    "resolveJsonModule": true,
+    "rootDirs": ["."],
+    "baseUrl": "src",
+    "paths": {
+      "":["./*"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build", "scripts"]
+  "includes": ["src"]
 }
