@@ -1,9 +1,9 @@
 import React from 'react';
-import {text, boolean} from '@storybook/addon-knobs';
-import FormInput from './index';
+import { text, boolean } from '@storybook/addon-knobs';
+import FormInput from '.';
 
 export default {
-  title: 'Molecules / FormInput'
+  title: 'Molecules / FormInput',
 };
 
 export const defaultInput: React.FC = () => {
@@ -11,7 +11,7 @@ export const defaultInput: React.FC = () => {
     <FormInput
       labelProps={{
         name: text('labelName', '이메일'),
-        required: boolean('required', false)
+        required: boolean('required', false),
       }}
       inputName="email"
       invalid={boolean('invalid', false)}
@@ -26,7 +26,7 @@ export const requiredInput: React.FC = () => {
     <FormInput
       labelProps={{
         name: text('labelName', '이메일'),
-        required: boolean('required', true)
+        required: boolean('required', true),
       }}
       inputName="email"
       invalid={boolean('invalid', false)}
@@ -41,7 +41,7 @@ export const invalidInput: React.FC = () => {
     <FormInput
       labelProps={{
         name: text('labelName', '이메일'),
-        required: boolean('required', true)
+        required: boolean('required', true),
       }}
       inputName="email"
       invalid={boolean('invalid', true)}
@@ -56,7 +56,7 @@ export const disabledInput: React.FC = () => {
     <FormInput
       labelProps={{
         name: text('labelName', '이메일'),
-        required: boolean('required', false)
+        required: boolean('required', false),
       }}
       inputName="email"
       invalid={boolean('invalid', false)}

@@ -1,8 +1,8 @@
 import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
 import Swal from 'sweetalert2';
-import XitCmm from '../commons/XitCmm';
+import XitCmm from 'commons/XitCmm';
 import Alert from 'react-s-alert';
-import {IApiResponse} from '../types/ApiModel';
+import {IApiResponse} from 'types/ApiModel';
 //import Alert from 'react-s-alert';
 //import withReactContent from 'sweetalert2-react-content';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
-import { Btn } from 'components';
-import { CREATE_EVENT } from 'commons/constants/string';
+import {Btn} from 'components';
+import {OPST_OPEN} from 'commons/constants/string';
 import ROUTES from 'commons/constants/routes';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 function MainBanner({
-  imgSrc = 'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1',
+  imgSrc = 'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1'
 }: Props): React.ReactElement {
   return (
     <S.Wrapper imgSrc={imgSrc}>
@@ -19,12 +19,7 @@ function MainBanner({
           <br />
           가장 쉬운 방법
         </S.Title>
-        <Btn
-          styletype="primary"
-          to={ROUTES.EVENT_CREATE}
-          children={CREATE_EVENT}
-          data-testid={'mainbanner-btn'}
-        />
+        <Btn styletype="primary" to={ROUTES.EVENT_CREATE} children={OPST_OPEN} data-testid={'mainbanner-btn'} />
       </S.Container>
     </S.Wrapper>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ifProp, palette, theme } from 'styled-tools';
+import {ifProp, palette, theme} from 'styled-tools';
 import Input from 'components/atoms/Input';
 
 interface Props {

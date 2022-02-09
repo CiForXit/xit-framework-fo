@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { mount } from 'enzyme';
+import React, {useEffect} from 'react';
+import {mount} from 'enzyme';
 import axios from 'axios';
-import { OK } from 'http-status';
+import {OK} from 'http-status';
 
-import useFetch, { FetchProps } from './useFetch';
+import useFetch, {FetchProps} from './useFetch';
 
 describe('Hooks', () => {
   it('useFetch (Mock API)', async () => {
@@ -11,9 +11,9 @@ describe('Hooks', () => {
     const mockURL = 'http://www.mocky.io/v2/5dde1af02f00004b697eacd6';
     const result = await axios({
       method: 'get',
-      url: mockURL,
+      url: mockURL
     });
-    const { status, data } = result;
+    const {status, data} = result;
     expect(status).toBe(OK);
     expect(data.hello).toBe('world');
   });
@@ -21,16 +21,13 @@ describe('Hooks', () => {
     // given
     const mockURL = 'http://www.mocky.io/v2/5dde1af02f00004b697eacd6';
     let step = 0;
-    const steps = [
-      { type: 'request' },
-      { type: 'success', data: { hello: 'world' }, status: OK },
-    ];
+    const steps = [{type: 'request'}, {type: 'success', data: {hello: 'world'}, status: OK}];
     const resultTypes: FetchProps<any>[] = [];
 
     function MockComponent(): React.ReactElement {
       const result = useFetch<object>({
         method: 'get',
-        url: mockURL,
+        url: mockURL
       });
 
       useEffect(() => {
@@ -43,7 +40,7 @@ describe('Hooks', () => {
     mount(<MockComponent />);
 
     // then
-    await new Promise(resolve => {
+    await new Promise<void>((resolve) => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {
@@ -70,7 +67,7 @@ describe('Hooks', () => {
     function MockComponent(): React.ReactElement {
       const result = useFetch({
         method: 'get',
-        url: mockURL,
+        url: mockURL
       });
 
       useEffect(() => {
@@ -83,7 +80,7 @@ describe('Hooks', () => {
     mount(<MockComponent />);
 
     // then
-    await new Promise(resolve => {
+    await new Promise<void>((resolve) => {
       (function waitFetching() {
         setTimeout(() => {
           if (resultTypes[step]) {

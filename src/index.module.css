@@ -1,3 +1,6 @@
+@import-normalize;
+/* reset을 위한 css 정의 */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

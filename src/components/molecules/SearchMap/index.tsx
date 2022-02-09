@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { searchAddressByKeyword } from 'apis';
+import React, {useState, useEffect} from 'react';
+import {searchAddressByKeyword} from 'apis';
 import * as S from './style';
-import { Input, KakaoMap } from 'components';
-import { useDebounce } from 'hooks';
-import DropDown, { Item as DropDownItem } from 'components/molecules/DropDown';
-import { SearchMapResult } from 'types/Data';
+import {Input, KakaoMap} from 'components';
+import {useDebounce} from 'hooks';
+import DropDown, {Item as DropDownItem} from '../DropDown';
+import {SearchMapResult} from 'types/Data';
 
 interface Location {
   latitude: number;
@@ -18,34 +18,29 @@ interface SearchResult {
 }
 
 export const convertResultsToItems = (items: SearchResult[]): DropDownItem[] =>
-  items.map(item => {
-    const {
-      x: longitude,
-      y: latitude,
-      road_address_name: title,
-      place_name: desc,
-    } = item;
+  items.map((item) => {
+    const {x: longitude, y: latitude, road_address_name: title, place_name: desc} = item;
     return {
       title,
       desc,
       value: {
         latitude,
-        longitude,
-      },
+        longitude
+      }
     };
   });
 
 interface Props {
-  handleOnChange?: ({ address, latitude, longitude }: SearchMapResult) => void;
+  handleOnChange?: ({address, latitude, longitude}: SearchMapResult) => void;
 }
 
-function SearchMap({ handleOnChange }: Props): React.ReactElement {
+function SearchMap({handleOnChange}: Props): React.ReactElement {
   const [visible, setVisible] = useState<boolean>(true);
   const [keyword, setKeyword] = useState<string>('');
   const [results, setResults] = useState<DropDownItem[]>([]);
   const [location, setLocation] = useState<Location>({
     latitude: 37.4921311495846,
-    longitude: 127.029771111346,
+    longitude: 127.029771111346
   });
   const debouncedKeyword = useDebounce<string>(keyword, 300);
 
@@ -58,14 +53,12 @@ function SearchMap({ handleOnChange }: Props): React.ReactElement {
   }, [debouncedKeyword]);
 
   const search = async (query: string) => {
-    const { data } = await searchAddressByKeyword(query, 4);
+    const {data} = await searchAddressByKeyword(query, 4);
     const dropDownItems = convertResultsToItems(data.documents);
     setResults(dropDownItems);
   };
 
-  const handleKeywordChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ): Promise<void> => {
+  const handleKeywordChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     setKeyword(e.target.value);
     setVisible(true);
   };
@@ -73,7 +66,7 @@ function SearchMap({ handleOnChange }: Props): React.ReactElement {
   const handleClickResult = ({
     title,
     desc,
-    value,
+    value
   }: {
     title: string;
     desc: string;
@@ -85,7 +78,7 @@ function SearchMap({ handleOnChange }: Props): React.ReactElement {
     setVisible(false);
     setKeyword(title || desc);
     setLocation(value);
-    if (handleOnChange) handleOnChange({ address: title || desc, ...value });
+    if (handleOnChange) handleOnChange({address: title || desc, ...value});
   };
 
   return (
@@ -97,11 +90,7 @@ function SearchMap({ handleOnChange }: Props): React.ReactElement {
           onChange={handleKeywordChange}
           placeholder="서울 서초구 강남대로 327"
         />
-        <DropDown
-          visible={visible}
-          items={results}
-          handleOnClick={handleClickResult}
-        />
+        <DropDown visible={visible} items={results} handleOnClick={handleClickResult} />
       </S.SearchContainer>
       <S.KakaoMapWrapper>
         <KakaoMap {...location} />

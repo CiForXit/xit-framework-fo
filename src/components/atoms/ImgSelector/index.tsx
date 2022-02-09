@@ -54,9 +54,9 @@ function ImgSelector({onChange, height = '20rem', maxSize}: Props): ReactElement
       const {data, file} = await readFileOfInput(inputRef, maxSize);
       setBackground(data);
       onChange && onChange(data, file);
-    } catch (error) {
-      if (error instanceof Error && error.message === 'NO FILE SELECTED') return;
-      alert((error as Error).message);
+    } catch (error: any) {
+      if (error.message === 'NO FILE SELECTED') return;
+      alert(error.message);
     }
   }, [inputRef, onChange, maxSize]);
 

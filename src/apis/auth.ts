@@ -1,3 +1,3 @@
-import { mainAxios } from 'libs/axios';
+import {mainAxios} from 'libs/axios';
 
 export const verifyToken = () => mainAxios.post('auth');

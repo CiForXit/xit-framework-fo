@@ -1,17 +1,14 @@
-import { AccountState } from 'types/States';
-import { AccountAction } from 'types/Actions';
+import {AccountState} from 'types/States';
+import {AccountAction} from 'types/Actions';
 
 export const defaultAccountState: AccountState = {
   isLogin: false,
   userId: 0,
   googleId: 0,
-  email: '',
+  email: ''
 };
 
-export default function accountReducer(
-  state: AccountState,
-  action: AccountAction,
-) {
+export default function accountReducer(state: AccountState, action: AccountAction) {
   switch (action.type) {
     case 'LOGOUT': {
       return defaultAccountState;

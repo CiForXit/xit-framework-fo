@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { palette, theme } from 'styled-tools';
-import { fadeIn, fadeOut } from 'commons/style/animations';
+import styled, {css} from 'styled-components';
+import {palette, theme} from 'styled-tools';
+import {fadeIn, fadeOut} from 'commons/style/animations';
 
 interface FormItemContainerProps {
   direction: string;
@@ -11,9 +11,9 @@ export const FormItemContainer = styled.div<FormItemContainerProps>`
   align-items: flex-start;
   flex-direction: column;
   @media screen and (min-width: 32rem) {
-    flex-direction: ${props => props.direction};
+    flex-direction: ${(props) => props.direction};
   }
-  ${props =>
+  ${(props) =>
     props.direction === 'column' &&
     css`
       ${ItemContainer} {
@@ -63,5 +63,5 @@ export const ItemCaption = styled.div<ItemCaptionProps>`
   color: ${palette('primary')};
   margin-top: 0.8rem;
   visibility: hidden;
-  animation: ${props => (props.invalid ? fadeIn : fadeOut)} 0.5s forwards;
+  animation: ${(props) => (props.invalid ? fadeIn : fadeOut)} 0.5s forwards;
 `;

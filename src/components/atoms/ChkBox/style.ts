@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { palette } from 'styled-tools';
-import Icon from "../Icon";
+import {palette} from 'styled-tools';
+import {Icon} from 'components';
 
 export const Wrapper = styled.div`
   width: 2.5rem;

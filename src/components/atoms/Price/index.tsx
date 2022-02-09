@@ -9,11 +9,7 @@ export interface PriceProps {
   separated?: boolean;
 }
 
-function Price({
-  children,
-  currency = '₩',
-  separated = false,
-}: PriceProps): React.ReactElement {
+function Price({children, currency = '₩', separated = false}: PriceProps): React.ReactElement {
   return (
     <S.Wrapper>
       {+children === 0
@@ -21,7 +17,7 @@ function Price({
         : numberDecorator({
             mount: children,
             currency,
-            separated,
+            separated
           })}
     </S.Wrapper>
   );

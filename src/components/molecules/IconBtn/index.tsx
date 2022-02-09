@@ -1,8 +1,8 @@
 import React from 'react';
 
 import * as S from './style';
-import { Props as BtnProps } from 'components/atoms/Btn';
-import { IconType } from 'react-icons';
+import {Props as BtnProps} from 'components/atoms/Btn';
+import {IconType} from 'react-icons';
 
 type CustomBtnProps = Omit<BtnProps, 'children'>;
 
@@ -29,7 +29,7 @@ function IconBtn({
   noneIconColor = '',
   circleImgSrc,
   IconHeight = '1.5rem',
-  fullid = false,
+  fullid = false
 }: Props): React.ReactElement {
   return (
     <S.RootWrapper fullid={fullid}>
@@ -48,7 +48,7 @@ function IconBtn({
             <S.IconWrapper>
               {icon({
                 size: IconHeight,
-                color: noneIconColor,
+                color: noneIconColor
               })}
             </S.IconWrapper>
           )}

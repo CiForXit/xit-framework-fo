@@ -1,31 +1,24 @@
 import React from 'react';
 
 import SignUpForm from '.';
-import { text } from '@storybook/addon-knobs';
+import {text} from '@storybook/addon-knobs';
 
-import {
-  SIGNUP_EMAIL,
-  SIGNUP_FIRST_NAME,
-  SIGNUP_LAST_NAME,
-  SIGNUP_PHONE_NUMBER,
-} from '../../../commons/constants/string';
+import {SIGNUP_EMAIL, SIGNUP_FIRST_NAME, SIGNUP_LAST_NAME, SIGNUP_PHONE_NUMBER} from 'commons/constants/string';
 
 export default {
-  title: 'Organisms / SignUpForm',
+  title: 'Organisms / SignUpForm'
 };
 
 export const index: React.FC = () => {
   const Button = {
     children: text('컨텐츠', ''),
     styletype: 'primary',
-    grow: true,
+    grow: true
   };
 
   return (
     <>
-      <h1 style={{ marginBottom: '4rem' }}>
-        *state를 주입해야 하는 컴포넌트이기 때문에 아래의 Knob로 인풋 변경 가능
-      </h1>
+      <h1 style={{marginBottom: '4rem'}}>*state를 주입해야 하는 컴포넌트이기 때문에 아래의 Knob로 인풋 변경 가능</h1>
       <SignUpForm
         FormInputs={{
           email: {
@@ -34,8 +27,8 @@ export const index: React.FC = () => {
             value: text('이메일', ''),
             labelProps: {
               name: SIGNUP_EMAIL,
-              required: false,
-            },
+              required: false
+            }
           },
           firstName: {
             inputName: 'firstName',
@@ -43,8 +36,8 @@ export const index: React.FC = () => {
             value: text('성', ''),
             labelProps: {
               name: SIGNUP_FIRST_NAME,
-              required: true,
-            },
+              required: true
+            }
           },
           lastName: {
             inputName: 'lastName',
@@ -52,8 +45,8 @@ export const index: React.FC = () => {
             value: text('이름', ''),
             labelProps: {
               name: SIGNUP_LAST_NAME,
-              required: true,
-            },
+              required: true
+            }
           },
           phoneNumber: {
             inputName: 'phoneNumber',
@@ -61,9 +54,9 @@ export const index: React.FC = () => {
             value: text('휴대폰번호', ''),
             labelProps: {
               name: SIGNUP_PHONE_NUMBER,
-              required: true,
-            },
-          },
+              required: true
+            }
+          }
         }}
         Button={Button}
       />

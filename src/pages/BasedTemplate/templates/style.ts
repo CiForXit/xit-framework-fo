@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 import ImgBtn from 'components/molecules/ImgBtn';
 
 const commonStyle = css`
