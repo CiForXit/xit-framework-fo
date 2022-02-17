@@ -126,6 +126,28 @@ const XitCmm = {
     return [value, setValue, changer];
   },
 
+  // ag-grid 페이지 변경
+  onPageSizeChanged() {
+    /*
+    Page Size:
+      <Select
+        defaultInputValue={'2'}
+    defaultvalue={selectedPageSize}
+    onChange={onPageSizeChanged}
+    options={options}
+    />
+*/
+    //var value = (document.getElementById('page-size') as HTMLInputElement).value;
+    //gridOptions.api!.paginationSetPageSize(Number(value));
+    //onPageSizeChnged: useCallback((gridRef: AgGridReact, pageSize: number) => {
+    //  gridRef.current.api.paginationSetPageSize(Number(value));
+    //}, []),
+    // MutableRefObject
+    //onPageSizeChnged: useCallback((gridRef: RefObject<AgGridReact>, pageSizeStr: string) => {
+    //  gridRef.current.api.paginationSetPageSize(Number(pageSizeStr));
+    //}, []),
+  },
+
   /**
    * form 데이타를 JSON 으로 return
    * @param frm

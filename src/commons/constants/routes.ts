@@ -4,6 +4,8 @@ export default {
   LOGIN: '/login',
   LOGOUT: '/logout',
   USER: '/user',
+  BOARD: '/board',
+
   EVENT_CREATE: '/event/create',
   EVENT_DETAIL: '/events',
   MYPAGE_TICKETS: '/my/tickets',

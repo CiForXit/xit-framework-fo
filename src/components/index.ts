@@ -43,3 +43,4 @@ export {default as CounterBox} from './organisms/CounterBox';
 export {default as EventSection} from './organisms/EventSection';
 export {default as CreateTicketForm} from './organisms/CreateTicketForm';
 export {default as CreateEventForm} from './organisms/CreateEventForm';
+export {default as AgGrid} from './organisms/AgGrid';

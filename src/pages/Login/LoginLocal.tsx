@@ -51,7 +51,8 @@ const Login = ({authService}: IAppProps) => {
           localStorage.setItem(ACCESS_TOKEN_NAME, `${res.data.grantType} ${res.data.accessToken}`);
           XitCmm.setCookie(REFRESH_TOKEN_NAME, res.data.refreshToken);
         }
-        navigate(ROUTES.MAIN);
+        //navigate(ROUTES.MAIN);
+        navigate(ROUTES.BOARD);
         //this.props.history.push("/");
         //data ? console.log(`data: {}`, data) : '';
       });

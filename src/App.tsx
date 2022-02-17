@@ -1,11 +1,8 @@
-import {ThemeProvider} from 'styled-components';
-import defaultTheme from 'commons/style/themes/default';
-import Normalize from 'commons/style/Normalize';
-import GlobalStyles from 'commons/style/GlobalStyle';
+//import {ThemeProvider} from 'styled-components';
 import ROUTES from 'commons/constants/routes';
 
-import LoginLocal from './pages/Login/LoginLocal';
-import AuthService from './apis/AuthService';
+import LoginLocal from 'pages/Login/LoginLocal';
+import AuthService from 'apis/AuthService';
 import React, {useEffect, useState} from 'react';
 
 import Alert from 'react-s-alert';
@@ -13,9 +10,13 @@ import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
-import {ACCESS_TOKEN_NAME} from './types/AuthModel';
+import {ACCESS_TOKEN_NAME} from 'types/AuthModel';
 import {Header} from './stories/Header';
 import GridRecord from 'grid';
+import {AgGrid} from 'components';
+import CellRendering from 'components/organisms/AgGrid/CellRendering';
+import {Board} from 'pages';
+import BoardService from 'apis/BoardService';
 
 //import styles from './App.module.css';
 //import Header from './components/layout/Header';
@@ -35,6 +36,8 @@ import GridRecord from 'grid';
 export interface IAppProps {
   authService: AuthService;
 }
+
+const boardService = new BoardService();
 
 const App = ({authService}: IAppProps) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -63,16 +66,17 @@ const App = ({authService}: IAppProps) => {
 
   // @ts-ignore
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Normalize />
-      <GlobalStyles />
-      {/*<div className={styles.app}>*/}
+    <>
       <BrowserRouter>
         {/*<Header />*/}
 
         <Routes>
           <Route path="/" element={<LoginLocal authService={authService} />} />
+
+          <Route path="/board" element={<Board />} />
           <Route path="/grid" element={<GridRecord />} />
+          <Route path="/grid2" element={<AgGrid />} />
+          <Route path="/grid3" element={<CellRendering />} />
           {/*<Route path={ROUTES.MAIN} element={<Main />} />*/}
           <Route
             path={ROUTES.MAIN}
@@ -92,8 +96,8 @@ const App = ({authService}: IAppProps) => {
         {/*<Footer />*/}
       </BrowserRouter>
       <Alert stack={{limit: 3}} timeout={3000} position="top-right" effect="slide" offset={65} />
-      {/*</div>*/}
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 };
 

@@ -1,3 +1,44 @@
+export interface IParam<T> {
+  size?: number;
+  page?: number;
+  params?: T | null | undefined;
+}
+
+export interface IBoard {
+  /* 게시판 코드 */
+  ciCode: number;
+  /* 글번호 */
+  ciContentno: number;
+  /* 제목 */
+  ciTitle: string;
+  /* 사용자ID */
+  ciId: string;
+  /* 사용자 비번 */
+  ciPwd?: string;
+  /* 사용자이름 */
+  ciName: string;
+  /* 등록일자 */
+  ciNalja: string;
+  /* 등록시간 */
+  ciTime: string;
+  /* 조회수 */
+  ciHit: number;
+  /* ref */
+  ciRef: number;
+  /* step */
+  ciStep: number;
+  /* level */
+  ciRevel: number;
+  /* 비번 */
+  ciPass?: string;
+  /* email */
+  ciEmail: string;
+  /* 내용 */
+  ciContents: string;
+  /* IP */
+  ciIp: string;
+}
+
 export interface User {
   id: number;
   lastName: string;
@@ -86,7 +127,7 @@ export interface BoughtTicketEvent {
       userId: number;
       isAttendance: boolean;
       createdAt: string;
-    },
+    }
   ];
 }
 
