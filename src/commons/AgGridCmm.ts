@@ -2,6 +2,10 @@ import {GridOptions, RowClassParams, RowStyle} from 'ag-grid-community';
 import {RefObject, useCallback} from 'react';
 import {AgGridReact} from 'ag-grid-react';
 
+export const getGridOptions = () => {
+  return gridOptions;
+};
+
 export const gridOptions: GridOptions = {
   //columnDefs: [],
   //rowData: [],
@@ -53,7 +57,7 @@ export const gridOptions: GridOptions = {
   // pagination properties
   ////////////////////////////////////////////////////////////////
   // serverSide / clientSide / infinite / viewPort
-  rowModelType: 'infinite',
+  rowModelType: 'clientSide',
   pagination: true,
   paginationPageSize: 10,
   // 그리드에 처음에 표시할 행 수
