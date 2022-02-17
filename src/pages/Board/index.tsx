@@ -154,88 +154,31 @@ const Board = () => {
       //rowModelType이 serverSide / infinite
       //e.api.setDatasource(dataSource);
 */
-
       // rowModelType : clientSide
-      e.api.setRowData(response.data);
-      //gridApi?.setDatasource(dataSource);
+      //e.api.setRowData(response.data);
+      //     setRowData(response.data);
     };
-
-    const param: IParam<any> = {
-      page: page,
-      size: 100
-    };
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    //useEffect(() => {
-    //return () => {
-    boardService
-      //.boardList({page: gridOptions.api.paginationGetCurrentPage() + 1, size: gridOptions.api.paginationGetPageSize()})
-      .boardList(param)
-      .then((res) => {
-        if (!res.success) {
-          return;
-        }
-        if (res.data) {
-          updateData(res);
-          //e.api.setRowData({data: {...res.data}});
-          //gridApi?.setRowData(res.data!.data);
-        }
-      });
-
-    // axios.get('http://localhost:8090' + BOARD_LIST_URL, {params: {page: 1, size: 10}}).then((res) => {
-    //   //gridApi.setRowData(res.data.data);
-    //   updateData(res);
-    //   // rowModelType이 clientSide인 경우 사용
-    //   //e.api.setRowData(res.data.data);
-    // });
   };
 
   function getBoardList() {
-    const updateData = (response) => {
-      const dataSource: IDatasource = {
-        rowCount: -1,
-        getRows: (params: IGetRowsParams) => {
-          //console.log('asking for ' + params.startRow + ' to ' + params.endRow);
-          setTimeout(function () {
-            const rowsThisPage = response.data!.slice(params.startRow, params.endRow);
-            let lastRow = -1;
-            if (response.data!.length <= params.endRow) {
-              //lastRow = response.data!.length; //res.paginator?.totalCount;
-              lastRow = response.paginator?.totalCount;
-            }
-            setPage(params.startRow / pageSize + 1);
-            params.successCallback(rowsThisPage, lastRow);
-          }, 500);
-        }
-      };
-      //      gridOptions.api!.setDatasource(dataSource);
-      //gridOptions.api!.setRowData(response.data);
-      gridApi!.setRowData(response.data);
-      //setRowData(response.data);
-    };
-
     const param: IParam<any> = {
       page: page,
-      size: pageSize
+      size: 100 //pageSize
     };
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    //useEffect(() => {
-    //return () => {
-    boardService
-      //.boardList({page: gridOptions.api.paginationGetCurrentPage() + 1, size: gridOptions.api.paginationGetPageSize()})
-      .boardList(param)
-      .then((res) => {
-        if (!res.success) {
-          return;
-        }
-        if (res.data) updateData(res);
-      });
+    boardService.boardList(param).then((res) => {
+      if (!res.success) {
+        return;
+      }
+      if (res.data) {
+        setRowData(res.data);
+      }
+    });
   }
 
-  // useEffect(() => {
-  //   getBoardList();
-  // }, [page, pageSize]);
+  useEffect(() => {
+    getBoardList();
+  }, [page, pageSize]);
 
   const handlePagination = (e: PaginationChangedEvent) => {
     console.log(`${e.newPage}>>>>>>>>>>>>>page = ${page}`);

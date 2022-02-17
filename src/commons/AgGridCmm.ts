@@ -56,8 +56,14 @@ export const gridOptions: GridOptions = {
   ////////////////////////////////////////////////////////////////
   // pagination properties
   ////////////////////////////////////////////////////////////////
+
   // serverSide / clientSide / infinite / viewPort
-  //rowModelType: 'clientSide',
+  //rowModelType이 serverSide / infinite
+  //e.api.setDatasource(dataSource);
+  // rowModelType : clientSide
+  //e.api.setRowData(response.data);
+  rowModelType: 'clientSide',
+
   pagination: true,
   paginationPageSize: 10,
   // 그리드에 처음에 표시할 행 수
