@@ -57,7 +57,7 @@ export const gridOptions: GridOptions = {
   // pagination properties
   ////////////////////////////////////////////////////////////////
   // serverSide / clientSide / infinite / viewPort
-  rowModelType: 'clientSide',
+  //rowModelType: 'clientSide',
   pagination: true,
   paginationPageSize: 10,
   // 그리드에 처음에 표시할 행 수
@@ -99,7 +99,7 @@ export const gridOptions: GridOptions = {
     if (param.node.rowPinned) {
       return 22;
     }
-    return 18;
+    return 27;
   },
   // GRID READY 이벤트, 사이즈 자동조정
   onGridReady: function (event) {

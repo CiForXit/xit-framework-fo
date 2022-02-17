@@ -10,8 +10,8 @@ export interface IBoardReponse {
 }
 
 class BoardService {
-  async boardList(params: IParam<any>): Promise<IApiResponse<[IBoard]>> {
-    return await reqApi.get<IApiResponse<[IBoard]>>(BOARD_LIST_URL, {params});
+  boardList(params: IParam<any>): Promise<IApiResponse<[IBoard]>> {
+    return reqApi.get<IApiResponse<[IBoard]>>(BOARD_LIST_URL, {params});
     //.then(r => console.log(r))
     //.catch(e => {
     //  console.log(e)

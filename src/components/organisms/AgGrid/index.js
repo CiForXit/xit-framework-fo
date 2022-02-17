@@ -4,6 +4,11 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 //import './styles.css';
 import Button from '@mui/material/Button';
+import reqApi from '../../../apis/ApiService';
+import {IApiResponse} from '../../../types/ApiModel';
+import {IBoard} from '../../../types/Data';
+import {BOARD_LIST_URL} from '../../../commons/constants/ApiUrl';
+import axios from 'axios';
 
 const AgGrid = () => {
   const [gridApi, setGridApi] = useState(null);
@@ -18,11 +23,16 @@ const AgGrid = () => {
     //console.table(params);
     console.log(params);
 
-    const updateData = (data) => params.api.setRowData(data);
+    // const updateData = (data) => params.api.setRowData(data);
+    //
+    // fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+    //   .then((resp) => resp.json())
+    //   .then((data) => updateData(data));
 
-    fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-      .then((resp) => resp.json())
-      .then((data) => updateData(data));
+    const p = {page: 1, size: 10};
+    axios.get('http://localhost:8090' + BOARD_LIST_URL, {params: p}).then((res) => {
+      params.api.setRowData(res.data.data);
+    });
 
     //axios.get("")
     //.then((res) => updateData(res.data))
@@ -53,17 +63,7 @@ const AgGrid = () => {
           }}
           className="ag-theme-alpine">
           <h1>editable table</h1>
-          <div>
-            <Button variant="contained" disabled={btndisabled}>
-              action1
-            </Button>
-            <Button variant="contained" disabled={btndisabled}>
-              action1
-            </Button>
-            <Button variant="contained" disabled={btndisabled}>
-              action1
-            </Button>
-          </div>
+
           <AgGridReact
             rowData={rowData}
             rowSelection={'multiple'}
@@ -88,7 +88,7 @@ const AgGrid = () => {
             }}>
             <AgGridColumn
               headerName="..HELLO."
-              headerCheckboxSelection={true}
+              //headerCheckboxSelection={true}
               checkboxSelection={true}
               floatingFilter={false}
               suppressMenu={true}
@@ -103,10 +103,10 @@ const AgGrid = () => {
               suppressColumnsToolPanel={true}
             />
             <AgGridColumn headerName="Participant">
-              <AgGridColumn field="athlete" minWidth={170} />
+              <AgGridColumn field="ciCode" minWidth={170} />
               <AgGridColumn field="country" minWidth={150} />
             </AgGridColumn>
-            <AgGridColumn field="sport" />
+            <AgGridColumn field="ciCode" />
             <AgGridColumn headerName="Medals">
               <AgGridColumn field="total" columnGroupShow="closed" filter="agNumberColumnFilter" width={120} flex={0} />
               <AgGridColumn field="gold" columnGroupShow="open" filter="agNumberColumnFilter" width={100} flex={0} />
