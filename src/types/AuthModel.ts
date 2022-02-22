@@ -12,14 +12,14 @@ export enum ProviderType {
 export interface IUser {
   providerType: ProviderType;
   picture: string;
-  userId: string;
+  userid: string;
   token?: string;
-  password?: string;
+  passwd?: string;
 }
 
 export interface ILoginUser {
   providerType: ProviderType;
-  userId: string;
+  userid: string;
   token: string;
   refreshToken?: string;
 }

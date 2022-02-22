@@ -1,4 +1,5 @@
 export {default as Board} from './Board';
+export {default as Signin} from './Signin';
 export {default as BasedTemplate} from './BasedTemplate/templates';
 // export { default as EventCreate } from './EventCreate';
 // export { default as EventDetail } from './EventDetail';

@@ -15,7 +15,7 @@ import {Header} from './stories/Header';
 import GridRecord from 'grid';
 import {AgGrid} from 'components';
 import CellRendering from 'components/organisms/AgGrid/CellRendering';
-import {Board} from 'pages';
+import {Board, Signin} from 'pages';
 import BoardService from 'apis/BoardService';
 
 //import styles from './App.module.css';
@@ -74,6 +74,7 @@ const App = ({authService}: IAppProps) => {
           <Route path="/" element={<LoginLocal authService={authService} />} />
 
           <Route path="/board" element={<Board />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/grid" element={<GridRecord />} />
           <Route path="/grid2" element={<AgGrid />} />
           <Route path="/grid3" element={<CellRendering />} />

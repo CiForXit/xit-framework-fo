@@ -1,14 +1,15 @@
 import {GridOptions, RowClassParams, RowStyle} from 'ag-grid-community';
 import {RefObject, useCallback} from 'react';
-import {AgGridReact} from 'ag-grid-react';
+import {AgGridReact} from '@ag-grid-community/react';
 
 export const getGridOptions = () => {
   return gridOptions;
 };
 
 export const gridOptions: GridOptions = {
-  //columnDefs: [],
-  //rowData: [],
+  columnDefs: [],
+  rowData: [],
+  //datasource: {},
   defaultColDef: {
     editable: false,
     //width: 100,
@@ -62,14 +63,15 @@ export const gridOptions: GridOptions = {
   //e.api.setDatasource(dataSource);
   // rowModelType : clientSide
   //e.api.setRowData(response.data);
-  rowModelType: 'clientSide',
+  rowModelType: 'infinite',
+  //modules: null,
 
   pagination: true,
-  paginationPageSize: 10,
   // 그리드에 처음에 표시할 행 수
-  infiniteInitialRowCount: 10,
-  // 페이지 캐시 크기
-  cacheBlockSize: 10,
+  infiniteInitialRowCount: 5,
+  paginationPageSize: 5,
+  // fetch rows per at a time
+  cacheBlockSize: 5,
 
   //paginateChildRows: true,
   rowSelection: 'multiple' /* 'single' or 'multiple',*/,

@@ -5,7 +5,7 @@ import App from './App';
 
 import AuthService from './apis/AuthService';
 //import {ThemeProvider} from 'styled-components';
-import {ThemeProvider} from '@mui/material';
+import {createTheme, ThemeProvider} from '@mui/material';
 import theme from 'commons/theme';
 import defaultTheme from 'commons/style/themes/default';
 import Normalize from 'commons/style/Normalize';
@@ -17,7 +17,7 @@ const authService = new AuthService();
 
 ReactDOM.render(
   // <Provider store={{}}>
-  <ThemeProvider theme={defaultTheme}>
+  <ThemeProvider theme={createTheme}>
     <Normalize />
     <GlobalStyles />
     <App authService={authService} />

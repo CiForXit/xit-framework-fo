@@ -1,124 +1,106 @@
-import React, {useState} from 'react';
-import {AgGridReact, AgGridColumn} from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-//import './styles.css';
-import Button from '@mui/material/Button';
-import reqApi from '../../../apis/ApiService';
-import {IApiResponse} from '../../../types/ApiModel';
-import {IBoard} from '../../../types/Data';
-import {BOARD_LIST_URL} from '../../../commons/constants/ApiUrl';
+import React, {useCallback, useMemo, useState} from 'react';
+import {render} from 'react-dom';
+import {AgGridReact} from '@ag-grid-community/react';
+import {InfiniteRowModelModule} from '@ag-grid-community/infinite-row-model';
+import '@ag-grid-community/core/dist/styles/ag-grid.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import axios from 'axios';
 
 const AgGrid = () => {
-  const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [rowData, setRowData] = useState(null);
-  const [selectedRows, setSelectedRows] = useState([]);
-  const [btndisabled, setBtnDisabled] = useState(true);
-  const onGridReady = (params) => {
-    setGridApi(params.api);
-    setGridColumnApi(params.columnApi);
+  const containerStyle = useMemo(() => ({width: '100%', height: '100%'}), []);
+  const gridStyle = useMemo(() => ({height: '100%', width: '100%'}), []);
 
-    //console.table(params);
-    console.log(params);
+  const modules = useMemo(() => [InfiniteRowModelModule], []);
 
-    // const updateData = (data) => params.api.setRowData(data);
-    //
-    // fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
-    //   .then((resp) => resp.json())
-    //   .then((data) => updateData(data));
+  const [columnDefs, setColumnDefs] = useState([
+    // this row shows the row index, doesn't use any data from the row
+    {
+      headerName: 'ID',
+      maxWidth: 100,
+      // it is important to have node.id here, so that when the id changes (which happens
+      // when the row is loaded) then the cell is refreshed.
+      valueGetter: 'node.id',
+      cellRenderer: (props) => {
+        if (props.value !== undefined) {
+          return props.value;
+        } else {
+          return <img src="https://www.ag-grid.com/example-assets/loading.gif" />;
+        }
+      }
+    },
+    {field: 'athlete', minWidth: 200},
+    {field: 'age'},
+    {field: 'country', minWidth: 200, checkboxSelection: true},
+    {field: 'year'},
+    {field: 'date', minWidth: 150},
+    {field: 'sport', minWidth: 150},
+    {field: 'gold'},
+    {field: 'silver'},
+    {field: 'bronze'},
+    {field: 'total'}
+  ]);
+  const defaultColDef = useMemo(() => {
+    return {
+      flex: 1,
+      minWidth: 100,
+      resizable: true
+    };
+  }, []);
+  const isRowSelectable = useCallback(function (rowNode) {
+    return rowNode.data ? rowNode.data.country === 'United States' : false;
+  }, []);
 
-    const p = {page: 1, size: 10};
-    axios.get('http://localhost:8090' + BOARD_LIST_URL, {params: p}).then((res) => {
-      params.api.setRowData(res.data.data);
-    });
+  const onGridReady = useCallback((params) => {
+    axios
+      .get('http://localhost:8090/api/v1/ctgy/board?page=1&size=10')
+      //fetch('https://www.ag-grid.com/example-assets/olympic-winners.json')
+      //  .then((resp) => resp.json())
+      .then((data) => {
+        const dataSource = {
+          rowCount: undefined,
+          getRows: function (params) {
+            // console.log('asking for ' + params.startRow + ' to ' + params.endRow);
+            // At this point in your code, you would call the server.
+            // To make the demo look real, wait for 500ms before returning
+            setTimeout(function () {
+              // take a slice of the total rows
+              const rowsThisPage = data.data.data.slice(params.startRow, params.endRow);
+              // if on or after the last page, work out the last row.
+              let lastRow = -1;
+              if (data.data.data.length <= params.endRow) {
+                lastRow = data.data.data.length;
+              }
+              // call the success callback
+              params.successCallback(rowsThisPage, lastRow);
+            }, 500);
+          }
+        };
+        params.api.setDatasource(dataSource);
+      });
+  }, []);
 
-    //axios.get("")
-    //.then((res) => updateData(res.data))
-  };
-
-  const onSelectionChanged = () => {
-    const data = gridApi.getSelectedRows();
-
-    if (data.length > 0) {
-      setBtnDisabled(false);
-    } else {
-      setBtnDisabled(true);
-    }
-    setSelectedRows(gridApi.getSelectedRows());
-  };
-
-  const onCellValueChanged = (e) => {
-    console.log('changed', e.data);
-  };
   return (
-    <>
-      <div style={{width: '100%', height: '100%'}}>
-        <div
-          id="myGrid"
-          style={{
-            height: '600px',
-            width: '100%'
-          }}
-          className="ag-theme-alpine">
-          <h1>editable table</h1>
-
-          <AgGridReact
-            rowData={rowData}
-            rowSelection={'multiple'}
-            suppressRowClickSelection={false}
-            defaultColDef={{
-              editable: true,
-              sortable: true,
-              minWidth: 100,
-              filter: true,
-              resizable: true,
-              floatingFilter: true,
-              flex: 1
-            }}
-            sideBar={{
-              toolPanels: ['columns', 'filters'],
-              defaultToolPanel: ''
-            }}
-            onGridReady={onGridReady}
-            onSelectionChanged={onSelectionChanged}
-            onCellEditingStopped={(e) => {
-              onCellValueChanged(e);
-            }}>
-            <AgGridColumn
-              headerName="..HELLO."
-              //headerCheckboxSelection={true}
-              checkboxSelection={true}
-              floatingFilter={false}
-              suppressMenu={true}
-              minWidth={50}
-              maxWidth={50}
-              width={50}
-              flex={0}
-              resizable={false}
-              sortable={false}
-              editable={false}
-              filter={false}
-              suppressColumnsToolPanel={true}
-            />
-            <AgGridColumn headerName="Participant">
-              <AgGridColumn field="ciCode" minWidth={170} />
-              <AgGridColumn field="country" minWidth={150} />
-            </AgGridColumn>
-            <AgGridColumn field="ciCode" />
-            <AgGridColumn headerName="Medals">
-              <AgGridColumn field="total" columnGroupShow="closed" filter="agNumberColumnFilter" width={120} flex={0} />
-              <AgGridColumn field="gold" columnGroupShow="open" filter="agNumberColumnFilter" width={100} flex={0} />
-              <AgGridColumn field="silver" columnGroupShow="open" filter="agNumberColumnFilter" width={100} flex={0} />
-              <AgGridColumn field="bronze" columnGroupShow="open" filter="agNumberColumnFilter" width={100} flex={0} />
-            </AgGridColumn>
-            <AgGridColumn field="year" filter="agNumberColumnFilter" />
-          </AgGridReact>
-        </div>
+    <div style={containerStyle}>
+      <div style={gridStyle} className="ag-theme-alpine">
+        <AgGridReact
+          modules={modules}
+          columnDefs={columnDefs}
+          defaultColDef={defaultColDef}
+          rowBuffer={0}
+          rowSelection={'multiple'}
+          //isRowSelectable={isRowSelectable}
+          rowModelType={'infinite'}
+          cacheBlockSize={100}
+          cacheOverflowSize={2}
+          maxConcurrentDatasourceRequests={2}
+          infiniteInitialRowCount={1}
+          maxBlocksInCache={2}
+          onGridReady={onGridReady}
+        />
       </div>
-    </>
+    </div>
   );
 };
 
 export default AgGrid;
+//render(<AgGrid></AgGrid>, document.querySelector('#root'));

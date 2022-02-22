@@ -91,7 +91,8 @@ reqApi.interceptors.response.use(
     console.error('========== ApiService.response Error Data ==========');
     alertError(config, request, response, error);
     // error 데이타 return
-    return response.data;
+    //return response.data;
+    return error;
   }
 );
 

@@ -13,8 +13,8 @@ export interface ILoginReponse {
 }
 
 class AuthService {
-  async login(user: IUser): Promise<IApiResponse<ILoginReponse>> {
-    return await reqApi.post<IApiResponse<ILoginReponse>>(LOGIN_URL, user);
+  login(user: IUser): Promise<IApiResponse<ILoginReponse>> {
+    return reqApi.post<IApiResponse<ILoginReponse>>(LOGIN_URL, user);
     //.then(r => console.log(r))
     //.catch(e => {
     //  console.log(e)

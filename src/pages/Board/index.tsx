@@ -21,6 +21,7 @@ import {
   AgEvent,
   AgGridEvent,
   ColDef,
+  ColumnApi,
   GridApi,
   GridOptions,
   IDatasource,
@@ -36,13 +37,13 @@ import {BOARD_LIST_URL} from '../../commons/constants/ApiUrl';
 
 const Board = () => {
   const [gridApi, setGridApi] = useState<GridApi>();
-  const [gridColumnApi, setGridColumnApi] = useState(null);
+  const [columnApi, setColumnApi] = useState<ColumnApi>();
   const [rowData, setRowData] = useState<[IBoard]>();
   //const [selectedRows, setSelectedRows] = useState([]);
   const [btndisabled, setBtnDisabled] = useState(true);
   const [selectedPageSize, setSelectedPageSize] = useState(null);
-  const [page, setPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
   //const BoardService = new BoardService();
 
   const options = [
@@ -127,11 +128,49 @@ const Board = () => {
 
   const boardService = new BoardService();
 
-  const onGridReady = (e) => {
+  const update = async (page, pageSize): Promise<IDatasource> => {
+    const res: IApiResponse<any> = await fetch(
+      //`https://jsonplaceholder.typicode.com/comments?_start=${params.startRow}&_end=${params.endRow}`
+      `http://localhost:8090/api/v1/ctgy/board?page=${page}&size=${pageSize}`
+    ).then((r) => r.json());
+
+    return {
+      getRows: async function (params) {
+        console.log(params);
+        console.log(`page=${page}`);
+        // Fetch our data
+        //const response = await fetch(
+        //`https://jsonplaceholder.typicode.com/comments?_start=${params.startRow}&_end=${params.endRow}`
+        //  `http://localhost:8090/api/v1/ctgy/board?page=${page}&size=${pageSize}`
+        //);
+
+        // If something happened in our fetch, call failCallback()
+        // if (!response.ok) {
+        //   params.failCallback();
+        //   return;
+        // }
+        //
+        // // Get the rows in this batch
+        // const res = await response.json();
+
+        // Get total count of rows (returns "500" in this example)
+        const totalCount = res.count; //response.headers.get("X-Total-Count"
+
+        // If number of rows > 500, set lastRow = 500
+        // otherwise set it to -1 and continue loading when scrolling down
+        var lastRow = params.endRow >= totalCount ? totalCount : -1;
+        // Tell the grid we got our rows ready
+        params.successCallback(res.data, lastRow);
+      }
+    };
+  };
+
+  const onGridReady = async (e: GridReadyEvent) => {
     //setGridApi(e.api);
 
     setGridApi(e.api);
-    setGridColumnApi(e.columnApi);
+    setColumnApi(e.columnApi);
+    e.api.setDatasource(await update(page, pageSize));
 
     const updateData = (response) => {
       /*
@@ -176,9 +215,9 @@ const Board = () => {
     });
   }
 
-  useEffect(() => {
-    getBoardList();
-  }, [page, pageSize]);
+  //useEffect(() => {
+  //  getBoardList();
+  //}, [page, pageSize]);
 
   const handlePagination = (e: PaginationChangedEvent) => {
     console.log(`${e.newPage}>>>>>>>>>>>>>page = ${page}`);
@@ -197,11 +236,23 @@ const Board = () => {
     console.log('changed', e.data);
   };
 
-  function onPageSizeChanged(selectedOption) {
+  async function onPageSizeChanged(e: PaginationChangedEvent) {
     //let value = (document.getElementById('page-size') as HTMLInputElement).value;
     //let value = document.getElementById('page-size').value;
-    setSelectedPageSize(selectedOption);
-    gridOptions.api!.paginationSetPageSize(Number('5'));
+    //setSelectedPageSize(selectedOption);
+    //console.log(e);
+    const curPage = e.api.paginationGetCurrentPage();
+    console.log(`curPage=${curPage}`);
+    if (page != curPage + 1) {
+      console.log(`>>curPage=${curPage},page=${page}`);
+      setPage((prevPage) => curPage + 1);
+      console.log(`>>page=${page}`);
+      //e.api.paginationGoToPage(curPage);
+      e.api.setDatasource(await update(page, pageSize));
+    }
+
+    //gridOptions.api?.paginationGoToPage(0)
+    //gridOptions.api!.paginationSetPageSize(Number('5'));
     //gridOptions?.api?.onPaginationChanged;
   }
 
@@ -254,7 +305,7 @@ const Board = () => {
             {...gridOptions}
             onGridReady={onGridReady}
             onSelectionChanged={onSelectionChanged}
-            // onPaginationChanged={handlePagination}
+            //onPaginationChanged={onPageSizeChanged}
             onCellEditingStopped={(e) => {
               onCellValueChanged(e);
             }}

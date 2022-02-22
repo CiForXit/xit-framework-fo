@@ -27,7 +27,7 @@ const LoginSocial = ({authService}: IAppProps) => {
     console.log(`tokenObj : `, response.tokenObj);
     setLoginUser({
       providerType: ProviderType.GOOGLE,
-      userId: response.googleId,
+      userid: response.googleId,
       picture: ''
     });
     //loginUser && authService.login(loginUser);
