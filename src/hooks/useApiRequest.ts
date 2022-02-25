@@ -1,5 +1,5 @@
-import {AxiosResponse, AxiosError} from 'axios';
-import React, {useReducer, useEffect} from 'react';
+import { AxiosResponse, AxiosError } from 'axios';
+import React, { useReducer, useEffect } from 'react';
 
 export interface FetchProps<T> {
   type: '' | 'REQUEST' | 'SUCCESS' | 'FAILURE';
@@ -17,17 +17,17 @@ export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
 
 export function reducer<T>(result: FetchProps<T>, action: FetchProps<T>): FetchProps<T> {
-  const {type, body} = action;
+  const { type, body } = action;
 
   switch (type) {
     case REQUEST:
-      return {type, body};
+      return { type, body };
     case SUCCESS:
-      return {type, data: action.data, status: action.status};
+      return { type, data: action.data, status: action.status };
     case FAILURE:
-      return {type, err: action.err, status: action.status};
+      return { type, err: action.err, status: action.status };
     default:
-      return {type};
+      return { type };
   }
 }
 
@@ -37,12 +37,12 @@ export async function fetchData<T>(
   body?: any[]
 ) {
   try {
-    const {status, data} = body ? await apiRequest(...body) : await apiRequest();
+    const { status, data } = body ? await apiRequest(...body) : await apiRequest();
     if (status < 300) {
-      dispatch({type: SUCCESS, data, status});
+      dispatch({ type: SUCCESS, data, status });
     }
   } catch (err: any) {
-    return dispatch({type: FAILURE, err});
+    return dispatch({ type: FAILURE, err });
   }
 }
 

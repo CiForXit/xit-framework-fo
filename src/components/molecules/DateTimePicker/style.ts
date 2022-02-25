@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components';
-import {palette, theme, ifProp} from 'styled-tools';
-import {fadeIn, fadeOut} from 'commons/style/animations';
+import styled, { css } from 'styled-components';
+import { palette, theme, ifProp } from 'styled-tools';
+import { fadeIn, fadeOut } from 'commons/style/animations';
 
 const flexColumnStyle = css`
   display: flex;

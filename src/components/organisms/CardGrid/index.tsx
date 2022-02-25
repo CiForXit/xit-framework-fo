@@ -1,10 +1,10 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 
 import * as S from './style';
-import {Card} from 'components';
-import {useIntersect} from 'hooks';
+import { Card } from 'components';
+import { useIntersect } from 'hooks';
 import ROUTES from 'commons/constants/routes';
-import {EventCard} from 'types/Data';
+import { EventCard } from 'types/Data';
 
 interface Props {
   events: Map<number, EventCard>;
@@ -14,7 +14,7 @@ interface Props {
 
 const fn = (): void => {};
 
-function CardGrid({events, eventsOrder, requestNextData}: Props): React.ReactElement {
+function CardGrid({ events, eventsOrder, requestNextData }: Props): React.ReactElement {
   const getNextEventsTrigger = useCallback(requestNextData || fn, [requestNextData]);
 
   const [, setRef] = useIntersect(intersectCallback, {
@@ -36,7 +36,7 @@ function CardGrid({events, eventsOrder, requestNextData}: Props): React.ReactEle
           if (!eventData) {
             return <></>;
           }
-          const {id, mainImg, startAt, title, name, price, to} = eventData;
+          const { id, mainImg, startAt, title, name, price, to } = eventData;
 
           return (
             <Card

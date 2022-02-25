@@ -16,26 +16,19 @@ export const BtnStyle = css<BtnStyleProps>`
   width: ${ifProp('customprops.fit', 'fit-content', '18rem')};
   height: ${ifProp('customprops.fit', 'auto', '4rem')};
   line-height: 1.4rem;
-  background-color: ${ifProp('disabled', palette('grayscale', 3), props =>
-    palette(props.styletype),
-  )};
+  background-color: ${ifProp('disabled', palette('grayscale', 3), (props) => palette(props.styletype))};
   flex-shrink: 0;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  color: ${props =>
-    props.styletype === 'transparent' ||
-    props.styletype === 'transparent-border' ||
-    props.styletype === 'transparent-hover'
+  color: ${(props) =>
+    props.styletype === 'transparent' || props.styletype === 'transparent-border' || props.styletype === 'transparent-hover'
       ? palette('grayscale', 2)
       : palette('white')};
   -webkit-user-drag: none;
   display: inline-block;
   padding: 1.2rem 2rem;
   border-radius: 0.3rem;
-  border-color: ${props =>
-    props.styletype === 'transparent-border'
-      ? palette('grayscale', 2)
-      : 'transparent'};
+  border-color: ${(props) => (props.styletype === 'transparent-border' ? palette('grayscale', 2) : 'transparent')};
   outline: none;
   text-align: center;
   user-select: none;
@@ -45,7 +38,7 @@ export const BtnStyle = css<BtnStyleProps>`
 
   &:hover {
     opacity: ${palette('opacityscale', 0)};
-    ${props => {
+    ${(props) => {
       if (props.styletype === 'transparent-border') {
         return css`
           background-color: ${palette('grayscale', 2)};

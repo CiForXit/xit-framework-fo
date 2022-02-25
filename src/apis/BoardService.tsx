@@ -1,7 +1,7 @@
 import reqApi from './ApiService';
-import {BOARD_LIST_URL} from 'commons/constants/ApiUrl';
-import {IApiResponse} from 'types/ApiModel';
-import {IBoard, IParam} from '../types/Data';
+import { BOARD_LIST_URL } from 'commons/constants/ApiUrl';
+import { IApiResponse } from 'types/ApiModel';
+import { IBoard, IParam } from '../types/Data';
 
 export interface IBoardReponse {
   grantType: string;
@@ -11,7 +11,7 @@ export interface IBoardReponse {
 
 class BoardService {
   boardList(params: IParam<any>): Promise<IApiResponse<[IBoard]>> {
-    return reqApi.get<IApiResponse<[IBoard]>>(BOARD_LIST_URL, {params});
+    return reqApi.get<IApiResponse<[IBoard]>>(BOARD_LIST_URL, { params });
     //.then(r => console.log(r))
     //.catch(e => {
     //  console.log(e)

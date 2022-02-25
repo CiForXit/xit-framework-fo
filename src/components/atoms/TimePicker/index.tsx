@@ -6,7 +6,7 @@ interface Props {
 }
 
 const renderOptions = (): JSX.Element[] =>
-  Array.from(Array(24).keys()).map(time => {
+  Array.from(Array(24).keys()).map((time) => {
     const prefix = time < 12 ? '오전' : '오후';
     const formattedHour = time % 12 >= 10 ? time % 12 : `0${time % 12}`;
     const exactHour = time >= 10 ? time : `0${time}`;
@@ -20,8 +20,7 @@ const renderOptions = (): JSX.Element[] =>
 
 function TimePicker({ onChange }: Props): React.ReactElement {
   const [time, setTime] = useState<string>('00:00');
-  const handleOnChange = (e: React.ChangeEvent<HTMLSelectElement>): void =>
-    setTime(e.target.value);
+  const handleOnChange = (e: React.ChangeEvent<HTMLSelectElement>): void => setTime(e.target.value);
   useEffect(() => {
     onChange(time);
   }, [onChange, time]);

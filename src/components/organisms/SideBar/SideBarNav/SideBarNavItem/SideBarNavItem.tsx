@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /* Router */
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 /* Styled */
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ const ListItem = styled.li``;
 /* Main Component */
 const SideBarNavItem = (props) => {
   /* Props */
-  const {className, label, href} = props;
+  const { className, label, href } = props;
 
   /* Renderer */
   return (

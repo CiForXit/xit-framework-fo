@@ -13,8 +13,8 @@ export const Container = styled.div<ContainerProps>`
   background-image: url('${prop('background')}');
   background-size: cover;
   background-position: center;
-  border: ${props => (props.background ? '0' : '0.2rem dotted gray')};
-  color: ${props => (props.background ? 'transparent' : 'inherit')};
+  border: ${(props) => (props.background ? '0' : '0.2rem dotted gray')};
+  color: ${(props) => (props.background ? 'transparent' : 'inherit')};
   width: 100%;
   height: ${prop('height')};
   display: flex;

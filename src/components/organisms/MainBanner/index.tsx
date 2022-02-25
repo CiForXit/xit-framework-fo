@@ -1,16 +1,14 @@
 import React from 'react';
 import * as S from './style';
-import {Btn} from 'components';
-import {OPST_OPEN} from 'commons/constants/string';
+import { Btn } from 'components';
+import { OPST_OPEN } from 'commons/constants/string';
 import ROUTES from 'commons/constants/routes';
 
 interface Props {
   imgSrc?: string;
 }
 
-function MainBanner({
-  imgSrc = 'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1'
-}: Props): React.ReactElement {
+function MainBanner({ imgSrc = 'https://sprint.kr.object.ncloudstorage.com/tempimages/main-banner-1' }: Props): React.ReactElement {
   return (
     <S.Wrapper imgSrc={imgSrc}>
       <S.Container>

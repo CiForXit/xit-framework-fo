@@ -15,7 +15,7 @@ interface Props {
   href?: string;
 }
 
-function ImgBtn({src, alt, ...props}: Props): React.ReactElement {
+function ImgBtn({ src, alt, ...props }: Props): React.ReactElement {
   return (
     // <S.Button {...props}>
     //   <S.Image alt={alt} src={src} />

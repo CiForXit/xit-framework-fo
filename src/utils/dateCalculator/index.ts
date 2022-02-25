@@ -2,7 +2,7 @@ const days = ['일', '월', '화', '수', '목', '금', '토'];
 
 export function convertDate(targetDate: string): Date {
   const koreaTime = new Date(targetDate).toLocaleString('en-US', {
-    timeZone: 'Asia/Tokyo',
+    timeZone: 'Asia/Tokyo'
   });
 
   return new Date(koreaTime);
@@ -31,9 +31,9 @@ export function fillZero(targetNumber: number): string {
 export function getKoreanDateString(at: string) {
   const atDate = convertDate(at);
 
-  const atDateStr = `${fillZero(atDate.getFullYear())}년 ${fillZero(
-    atDate.getMonth() + 1,
-  )}월 ${fillZero(atDate.getDate())}일 (${days[atDate.getDay()]})`;
+  const atDateStr = `${fillZero(atDate.getFullYear())}년 ${fillZero(atDate.getMonth() + 1)}월 ${fillZero(atDate.getDate())}일 (${
+    days[atDate.getDay()]
+  })`;
 
   const noon = getMorningAndAfternoonString(atDate.getHours());
   const time = `${noon}:${fillZero(atDate.getMinutes())}`;
@@ -41,16 +41,13 @@ export function getKoreanDateString(at: string) {
   return `${atDateStr} ${time}`;
 }
 
-export function calculateStringOfDateRange(
-  startAt: string,
-  endAt: string,
-): string {
+export function calculateStringOfDateRange(startAt: string, endAt: string): string {
   const startAtDate = convertDate(startAt);
   const endAtDate = convertDate(endAt);
 
-  const startDateStr = `${fillZero(startAtDate.getFullYear())}년 ${fillZero(
-    startAtDate.getMonth() + 1,
-  )}월 ${fillZero(startAtDate.getDate())}일 (${days[startAtDate.getDay()]})`;
+  const startDateStr = `${fillZero(startAtDate.getFullYear())}년 ${fillZero(startAtDate.getMonth() + 1)}월 ${fillZero(
+    startAtDate.getDate()
+  )}일 (${days[startAtDate.getDay()]})`;
   const startHour = getMorningAndAfternoonString(startAtDate.getHours());
   const endHour = getMorningAndAfternoonString(endAtDate.getHours());
 
@@ -65,9 +62,7 @@ export function calculateStringOfDateRange(
     return `${startDateStr}\n${startTimeStr} - ${endTimeStr}`;
   }
 
-  const endDateStr = `${fillZero(endAtDate.getMonth() + 1)}월 ${fillZero(
-    endAtDate.getDate(),
-  )}일 (${days[endAtDate.getDay()]})`;
+  const endDateStr = `${fillZero(endAtDate.getMonth() + 1)}월 ${fillZero(endAtDate.getDate())}일 (${days[endAtDate.getDay()]})`;
 
   return `${startDateStr} ${startTimeStr}\n- ${endDateStr} ${endTimeStr}`;
 }

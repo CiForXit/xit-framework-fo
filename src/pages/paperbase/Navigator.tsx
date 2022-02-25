@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Divider from '@mui/material/Divider';
-import Drawer, {DrawerProps} from '@mui/material/Drawer';
+import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
@@ -17,10 +17,10 @@ import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputCompone
 import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const categories = [
-  {id: '공지사항', children: [{id: '공지사항', icon: <DnsRoundedIcon />, href: '/board', active: true}]},
+  { id: '공지사항', children: [{ id: '공지사항', icon: <DnsRoundedIcon />, href: '/board', active: true }] },
   {
     id: '주정차 의견진술',
     children: [
@@ -30,7 +30,7 @@ const categories = [
         href: '/',
         active: true
       },
-      {id: '주정차 의견진술 심의등록', icon: <DnsRoundedIcon />, href: ''}
+      { id: '주정차 의견진술 심의등록', icon: <DnsRoundedIcon />, href: '' }
     ]
   },
   {
@@ -42,8 +42,8 @@ const categories = [
         href: '/board1',
         active: false
       },
-      {id: '거주자 의견진술 심의목록', icon: <DnsRoundedIcon />, href: '/login'},
-      {id: '거주자 의견진술 심의등록', icon: <DnsRoundedIcon />, href: '/login'}
+      { id: '거주자 의견진술 심의목록', icon: <DnsRoundedIcon />, href: '/login' },
+      { id: '거주자 의견진술 심의등록', icon: <DnsRoundedIcon />, href: '/login' }
     ]
   },
   {
@@ -55,8 +55,8 @@ const categories = [
         href: '/login',
         active: false
       },
-      {id: '장애인 의견진술 심의목록', icon: <DnsRoundedIcon />, href: '/login'},
-      {id: '장애인 의견진술 심의등록', icon: <DnsRoundedIcon />, href: '/login'}
+      { id: '장애인 의견진술 심의목록', icon: <DnsRoundedIcon />, href: '/login' },
+      { id: '장애인 의견진술 심의등록', icon: <DnsRoundedIcon />, href: '/login' }
     ]
   },
   {
@@ -68,7 +68,7 @@ const categories = [
         href: '/login',
         active: false
       },
-      {id: '심사위원 평가', icon: <PeopleIcon />, href: '/login'}
+      { id: '심사위원 평가', icon: <PeopleIcon />, href: '/login' }
     ]
   },
   {
@@ -111,23 +111,23 @@ const itemCategory = {
 };
 
 export default function Navigator(props: DrawerProps) {
-  const {...other} = props;
+  const { ...other } = props;
 
   return (
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
-        <ListItem sx={{...item, ...itemCategory, fontSize: 22, color: '#fff'}}>
+        <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
           이의신청관리
         </ListItem>
-        {categories.map(({id, children}) => (
-          <Box key={id} sx={{bgcolor: '#101F33'}}>
-            <ListItem sx={{py: 1, px: 2}}>
-              <ListItemText sx={{color: '#fff'}}>{id}</ListItemText>
+        {categories.map(({ id, children }) => (
+          <Box key={id} sx={{ bgcolor: '#101F33' }}>
+            <ListItem sx={{ py: 1, px: 2 }}>
+              <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
-            {children.map(({id: childId, icon, href, active}) => (
+            {children.map(({ id: childId, icon, href, active }) => (
               <ListItem disablePadding key={childId}>
                 <ListItemButton selected={active} sx={item}>
                   <ListItemIcon>{icon}</ListItemIcon>

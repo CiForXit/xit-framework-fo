@@ -8,10 +8,7 @@ export interface TuiEditorProps {
   placeholder?: string;
 }
 
-function TuiEditor({
-  onChange,
-  placeholder = '내용을 입력해주세요.',
-}: TuiEditorProps): React.ReactElement {
+function TuiEditor({ onChange, placeholder = '내용을 입력해주세요.' }: TuiEditorProps): React.ReactElement {
   const [content, setContent] = useState('');
   const tuiEditorRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -42,8 +39,8 @@ function TuiEditor({
           'link',
           'divider',
           'code',
-          'codeblock',
-        ],
+          'codeblock'
+        ]
       });
       editor.on('change', () => {
         let editorHtml = editor.getHtml();
@@ -61,7 +58,7 @@ function TuiEditor({
     (content: string) => {
       if (onChange) onChange(content);
     },
-    [onChange],
+    [onChange]
   );
   useEffect(() => onChangeCallback(content), [content, onChangeCallback]);
 

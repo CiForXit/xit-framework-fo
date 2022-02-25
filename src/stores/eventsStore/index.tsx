@@ -1,13 +1,13 @@
-import React, {createContext, useReducer, SetStateAction, Dispatch, useState, useEffect} from 'react';
-import {OK, NOT_FOUND, INTERNAL_SERVER_ERROR} from 'http-status';
-import {EventDetail} from 'types/Data';
-import {EventsAction} from 'types/Actions';
-import {EventsState} from 'types/States';
-import {EventsReducer} from 'types/CustomHooks';
-import eventsReducer, {defaultEventsState} from './reducer';
-import {getEvents} from 'apis';
-import useApiRequest, {REQUEST, SUCCESS, FAILURE} from 'hooks/useApiRequest';
-import {ACTION_OPST_OPEN, ACTION_FETCH_EVENTS, ACTION_ERROR} from 'commons/constants/string';
+import React, { createContext, useReducer, SetStateAction, Dispatch, useState, useEffect } from 'react';
+import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
+import { EventDetail } from 'types/Data';
+import { EventsAction } from 'types/Actions';
+import { EventsState } from 'types/States';
+import { EventsReducer } from 'types/CustomHooks';
+import eventsReducer, { defaultEventsState } from './reducer';
+import { getEvents } from 'apis';
+import useApiRequest, { REQUEST, SUCCESS, FAILURE } from 'hooks/useApiRequest';
+import { ACTION_OPST_OPEN, ACTION_FETCH_EVENTS, ACTION_ERROR } from 'commons/constants/string';
 
 interface EventFetch {
   type: string;
@@ -29,7 +29,7 @@ const convertEvents = (
     events.set(event.id, event);
     return event.id;
   });
-  return {events, order};
+  return { events, order };
 };
 const convertCreatedEvent = (
   createdEvent: EventDetail
@@ -40,7 +40,7 @@ const convertCreatedEvent = (
   const events = new Map<number, EventDetail>();
   const order = [createdEvent.id];
   events.set(createdEvent.id, createdEvent);
-  return {events, order};
+  return { events, order };
 };
 
 export const EventsStoreState = createContext<EventsState>(defaultEventsState);
@@ -52,7 +52,7 @@ export const EventsStoreAction = createContext<{
   eventFetchDispatcher: () => {}
 });
 
-function EventsProvider({children}: {children: React.ReactElement}): JSX.Element {
+function EventsProvider({ children }: { children: React.ReactElement }): JSX.Element {
   const [eventsState, eventsDispather] = useReducer<EventsReducer>(eventsReducer, defaultEventsState);
 
   const [eventFetch, eventFetchDispatcher] = useState<EventFetch>({
@@ -75,7 +75,7 @@ function EventsProvider({children}: {children: React.ReactElement}): JSX.Element
         break;
       case ACTION_OPST_OPEN:
         if (!eventFetch.data.createdEvent) return;
-        const {events, order} = convertCreatedEvent(eventFetch.data.createdEvent);
+        const { events, order } = convertCreatedEvent(eventFetch.data.createdEvent);
         eventsDispather({
           type: eventFetch.type,
           value: {
@@ -90,13 +90,13 @@ function EventsProvider({children}: {children: React.ReactElement}): JSX.Element
 
   useEffect(() => {
     if (eventFetch.type === ACTION_OPST_OPEN) return;
-    const {type, data, err} = fetchResult;
+    const { type, data, err } = fetchResult;
     switch (type) {
       case REQUEST:
         break;
       case SUCCESS:
         if (!data) return;
-        const {events, order} = convertEvents(data);
+        const { events, order } = convertEvents(data);
         eventsDispather({
           type: eventFetch.type,
           value: {
@@ -126,9 +126,7 @@ function EventsProvider({children}: {children: React.ReactElement}): JSX.Element
 
   return (
     <EventsStoreState.Provider value={eventsState}>
-      <EventsStoreAction.Provider value={{eventsDispather, eventFetchDispatcher}}>
-        {children}
-      </EventsStoreAction.Provider>
+      <EventsStoreAction.Provider value={{ eventsDispather, eventFetchDispatcher }}>{children}</EventsStoreAction.Provider>
     </EventsStoreState.Provider>
   );
 }

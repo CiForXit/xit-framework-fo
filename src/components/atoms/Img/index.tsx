@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import * as S from './style';
 //import {useIntersect} from 'hooks';
@@ -12,7 +12,7 @@ export interface Props {
   lazy?: boolean;
 }
 
-function Img({alt, src, lazy = false}: Props): React.ReactElement {
+function Img({ alt, src, lazy = false }: Props): React.ReactElement {
   // TODO: default 이미지로 저해상도의 사진이 좋을 것 같음
   // 5 Dec 2019 by inthewalter
   const [imgSrc, setImage] = useState(lazy ? '' : src);

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {AgGridReact, AgGridColumn} from 'ag-grid-react';
+import React, { useEffect, useState } from 'react';
+import { AgGridReact, AgGridColumn } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.min.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.min.css';
@@ -8,14 +8,14 @@ import 'ag-grid-community/dist/styles/ag-theme-balham-dark.min.css';
 import Button from '@mui/material/Button';
 
 import BoardService from 'apis/BoardService';
-import {IApiResponse} from '../../types/ApiModel';
-import {ILoginReponse} from '../../apis/AuthService';
+import { IApiResponse } from '../../types/ApiModel';
+import { ILoginReponse } from '../../apis/AuthService';
 import Alert from 'react-s-alert';
-import {ACCESS_TOKEN_NAME, REFRESH_TOKEN_NAME} from '../../types/AuthModel';
+import { ACCESS_TOKEN_NAME, REFRESH_TOKEN_NAME } from '../../types/AuthModel';
 import XitCmm from '../../commons/XitCmm';
 import ROUTES from '../../commons/constants/routes';
-import {getGridOptions} from 'commons/AgGridCmm';
-import {IBoard, IParam} from 'types/Data';
+import { getGridOptions } from 'commons/AgGridCmm';
+import { IBoard, IParam } from 'types/Data';
 import Select from 'react-select';
 import {
   AgEvent,
@@ -30,9 +30,9 @@ import {
   IServerSideGetRowsRequest,
   PaginationChangedEvent
 } from 'ag-grid-community';
-import {GridReadyEvent} from 'ag-grid-community/dist/lib/events';
+import { GridReadyEvent } from 'ag-grid-community/dist/lib/events';
 import axios from 'axios';
-import {BOARD_LIST_URL} from '../../commons/constants/ApiUrl';
+import { BOARD_LIST_URL } from '../../commons/constants/ApiUrl';
 import Layout from '../Layout/Layout';
 import Paperbase from '../paperbase/Paperbase';
 //import 'commons/style/agGrid.css';
@@ -49,9 +49,9 @@ const Board = (props) => {
   //const BoardService = new BoardService();
 
   const options = [
-    {value: '2', label: '2'},
-    {value: '5', label: '5'},
-    {value: '10', label: '10'}
+    { value: '2', label: '2' },
+    { value: '5', label: '5' },
+    { value: '10', label: '10' }
   ];
 
   const tempData = [
@@ -106,22 +106,22 @@ const Board = (props) => {
       valueGetter: 'node.rowIndex+1',
       minWidth: 60
     },
-    {headerName: '게시판코드', field: 'ciCode'},
-    {headerName: '글번호', field: 'ciContentno'},
-    {headerName: '제목', field: 'ciTitle', editable: true},
-    {headerName: '사용자ID', field: 'ciId'},
-    {headerName: '사용자 비번', field: 'ciPwd'},
-    {headerName: '사용자 이름', field: 'ciName'},
-    {headerName: '등록일', field: 'ciNalja'},
-    {headerName: '등록시간', field: 'ciTime'},
-    {headerName: '조회수', field: 'ciHit'},
-    {headerName: 'ref', field: 'ciRef'},
-    {headerName: 'step', field: 'ciStep'},
-    {headerName: 'level', field: 'ciRevel'},
-    {headerName: '비번', field: 'ciPass'},
-    {headerName: 'email', field: 'ciEmail'},
-    {headerName: '내용', field: 'ciContents'},
-    {headerName: 'IP', field: `ciIp`}
+    { headerName: '게시판코드', field: 'ciCode' },
+    { headerName: '글번호', field: 'ciContentno' },
+    { headerName: '제목', field: 'ciTitle', editable: true },
+    { headerName: '사용자ID', field: 'ciId' },
+    { headerName: '사용자 비번', field: 'ciPwd' },
+    { headerName: '사용자 이름', field: 'ciName' },
+    { headerName: '등록일', field: 'ciNalja' },
+    { headerName: '등록시간', field: 'ciTime' },
+    { headerName: '조회수', field: 'ciHit' },
+    { headerName: 'ref', field: 'ciRef' },
+    { headerName: 'step', field: 'ciStep' },
+    { headerName: 'level', field: 'ciRevel' },
+    { headerName: '비번', field: 'ciPass' },
+    { headerName: 'email', field: 'ciEmail' },
+    { headerName: '내용', field: 'ciContents' },
+    { headerName: 'IP', field: `ciIp` }
   ];
 
   const gridOptions: GridOptions = getGridOptions();

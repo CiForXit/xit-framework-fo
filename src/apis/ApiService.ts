@@ -1,8 +1,8 @@
-import axios, {AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, { AxiosInstance, AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Swal from 'sweetalert2';
 import XitCmm from 'commons/XitCmm';
 import Alert from 'react-s-alert';
-import {IApiResponse} from 'types/ApiModel';
+import { IApiResponse } from 'types/ApiModel';
 //import Alert from 'react-s-alert';
 //import withReactContent from 'sweetalert2-react-content';
 
@@ -63,7 +63,7 @@ reqApi.interceptors.request.use(
     }).then((r) => {});
     return config;
   },
-  ({config, request, response, ...error}) => {
+  ({ config, request, response, ...error }) => {
     console.error('========== ApiService.request error Data ==========');
     return alertError(config, request, response, error);
   }
@@ -87,7 +87,7 @@ reqApi.interceptors.response.use(
     }
     return Promise.resolve(response.data);
   },
-  ({config, request, response, ...error}) => {
+  ({ config, request, response, ...error }) => {
     console.error('========== ApiService.response Error Data ==========');
     alertError(config, request, response, error);
     // error 데이타 return

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import Label, {Props as LabelProps} from 'components/atoms/Label';
+import Label, { Props as LabelProps } from 'components/atoms/Label';
 
 export interface Props {
   /** name of input */
@@ -25,7 +25,7 @@ export interface Props {
   labelProps: LabelProps;
 }
 
-function FormInput({captionContent, invalid = false, labelProps, ...props}: Props): React.ReactElement {
+function FormInput({ captionContent, invalid = false, labelProps, ...props }: Props): React.ReactElement {
   return (
     <S.FormInputContainer>
       <Label {...labelProps} />

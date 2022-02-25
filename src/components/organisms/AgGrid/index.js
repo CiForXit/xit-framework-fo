@@ -1,14 +1,14 @@
-import React, {useCallback, useMemo, useState} from 'react';
-import {render} from 'react-dom';
-import {AgGridReact} from '@ag-grid-community/react';
-import {InfiniteRowModelModule} from '@ag-grid-community/infinite-row-model';
+import React, { useCallback, useMemo, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact } from '@ag-grid-community/react';
+import { InfiniteRowModelModule } from '@ag-grid-community/infinite-row-model';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import axios from 'axios';
 
 const AgGrid = () => {
-  const containerStyle = useMemo(() => ({width: '100%', height: '100%'}), []);
-  const gridStyle = useMemo(() => ({height: '100%', width: '100%'}), []);
+  const containerStyle = useMemo(() => ({ width: '100%', height: '100%' }), []);
+  const gridStyle = useMemo(() => ({ height: '100%', width: '100%' }), []);
 
   const modules = useMemo(() => [InfiniteRowModelModule], []);
 
@@ -28,16 +28,16 @@ const AgGrid = () => {
         }
       }
     },
-    {field: 'athlete', minWidth: 200},
-    {field: 'age'},
-    {field: 'country', minWidth: 200, checkboxSelection: true},
-    {field: 'year'},
-    {field: 'date', minWidth: 150},
-    {field: 'sport', minWidth: 150},
-    {field: 'gold'},
-    {field: 'silver'},
-    {field: 'bronze'},
-    {field: 'total'}
+    { field: 'athlete', minWidth: 200 },
+    { field: 'age' },
+    { field: 'country', minWidth: 200, checkboxSelection: true },
+    { field: 'year' },
+    { field: 'date', minWidth: 150 },
+    { field: 'sport', minWidth: 150 },
+    { field: 'gold' },
+    { field: 'silver' },
+    { field: 'bronze' },
+    { field: 'total' }
   ]);
   const defaultColDef = useMemo(() => {
     return {

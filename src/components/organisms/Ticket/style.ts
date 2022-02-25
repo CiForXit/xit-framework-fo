@@ -20,11 +20,7 @@ interface TicketContainerProps {
 }
 
 export const TicketContentWrapContainer = styled.div<TicketContainerProps>`
-  color: ${ifProp(
-    'disabled',
-    palette('grayscale', 4),
-    palette('grayscale', 1),
-  )};
+  color: ${ifProp('disabled', palette('grayscale', 4), palette('grayscale', 1))};
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;

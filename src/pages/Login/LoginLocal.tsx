@@ -1,26 +1,15 @@
-import React, {useState} from 'react';
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControl,
-  FormHelperText,
-  Grid,
-  Box,
-  Typography,
-  Container
-} from '@mui/material/';
+import React, { useState } from 'react';
+import { Avatar, Button, CssBaseline, TextField, FormControl, FormHelperText, Grid, Box, Typography, Container } from '@mui/material/';
 import styled from 'styled-components';
 
-import {useNavigate} from 'react-router-dom';
-import {ACCESS_TOKEN_NAME, ProviderType, REFRESH_TOKEN_NAME} from '../../types/AuthModel';
-import {IApiResponse} from '../../types/ApiModel';
-import {ILoginReponse} from '../../apis/AuthService';
+import { useNavigate } from 'react-router-dom';
+import { ACCESS_TOKEN_NAME, ProviderType, REFRESH_TOKEN_NAME } from '../../types/AuthModel';
+import { IApiResponse } from '../../types/ApiModel';
+import { ILoginReponse } from '../../apis/AuthService';
 import Alert from 'react-s-alert';
 import XitCmm from '../../commons/XitCmm';
 import ROUTES from '../../commons/constants/routes';
-import {IAppProps} from '../../App';
+import { IAppProps } from '../../App';
 
 const FormHelperTexts = styled(FormHelperText)`
   width: 100%;
@@ -33,14 +22,14 @@ const Boxs = styled(Box)`
   padding-bottom: 40px;
 `;
 
-const Login = ({authService}: IAppProps) => {
+const Login = ({ authService }: IAppProps) => {
   const [idError, setIdError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [paramError, setParamError] = useState(false);
   const navigate = useNavigate();
 
   const onhandlePost = (data) => {
-    const {userId, password} = data;
+    const { userId, password } = data;
 
     authService
       .login({
@@ -66,11 +55,11 @@ const Login = ({authService}: IAppProps) => {
   const handleSubmit = (e) => {
     setParamError(false);
     const data = new FormData(e.currentTarget);
-    const joinData: {userId: string | null; password: string | null} = {
+    const joinData: { userId: string | null; password: string | null } = {
       userId: data.get('userId') as string,
       password: data.get('password') as string
     };
-    const {userId, password} = joinData;
+    const { userId, password } = joinData;
 
     // id 유효성 체크
     //const idRegex = /([\w-.]+)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -104,17 +93,17 @@ const Login = ({authService}: IAppProps) => {
           flexDirection: 'column',
           alignItems: 'center'
         }}>
-        <Avatar sx={{m: 1, bgcolor: 'secondary.main'}} />
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
         <Typography component="h1" variant="h5">
           로그인
         </Typography>
-        <Boxs component="form" onSubmit={handleSubmit} sx={{mt: 3}}>
+        <Boxs component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <FormControl component="fieldset" variant="standard">
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   required
-                  autoFocus
+                  //autoFocus
                   fullWidth
                   type="text"
                   id="userId"
@@ -137,7 +126,7 @@ const Login = ({authService}: IAppProps) => {
               </Grid>
               <FormHelperTexts>{passwordError}</FormHelperTexts>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{mt: 3, mb: 2}} size="large">
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} size="large">
               로그인
             </Button>
           </FormControl>

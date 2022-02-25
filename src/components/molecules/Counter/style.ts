@@ -19,11 +19,7 @@ export const ArrowWrapper = styled.div<ArrowWrapperProps>`
   width: 5rem;
   height: 4rem;
   border-radius: 0 0.2rem 0.2rem 0;
-  background-color: ${ifProp(
-    'disabled',
-    palette('grayscale', 5),
-    palette('grayscale', 2),
-  )};
+  background-color: ${ifProp('disabled', palette('grayscale', 5), palette('grayscale', 2))};
   user-select: none;
   cursor: ${ifProp('disabled', 'initial', 'pointer')};
   transition: background-color ease 0.2s;

@@ -14,7 +14,7 @@ function TuiViewer({ content }: TuiViewerProps): React.ReactElement {
     if (tuiViewerElement)
       new Viewer({
         el: tuiViewerElement,
-        initialValue: content,
+        initialValue: content
       });
   }, [content]);
 

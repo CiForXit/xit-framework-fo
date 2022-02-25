@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
 import * as S from './style';
-import {Btn} from 'components';
+import { Btn } from 'components';
 import logo from 'assets/img/logo.svg';
 import ROUTES from 'commons/constants/routes';
-import {OPST_OPEN} from 'commons/constants/string';
+import { OPST_OPEN } from 'commons/constants/string';
 
-import {UserAccountState} from 'stores/accountStore';
+import { UserAccountState } from 'stores/accountStore';
 
 function Header(): React.ReactElement {
   //const account = useContext(UserAccountState);

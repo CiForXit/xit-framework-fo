@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import React, {ChangeEvent, Dispatch, SetStateAction, useCallback, useState} from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useCallback, useState } from 'react';
 // import axios, {AxiosResponse} from 'axios';
 // import {IApiResponse} from 'types/ApiModel';
 // import Alert from 'react-s-alert';
@@ -263,7 +263,7 @@ const XitCmm = {
    */
   removeCookie: (name: string, value?: string) => {
     if (!value) document.cookie = `${name}=Max-Age=-99999999;`;
-    else document.cookie = `${name}=${encodeURIComponent(value)}${{expires: 'Sun, 01-May-2019 14:00:00 UTC'}}`;
+    else document.cookie = `${name}=${encodeURIComponent(value)}${{ expires: 'Sun, 01-May-2019 14:00:00 UTC' }}`;
   }
 };
 export default XitCmm;

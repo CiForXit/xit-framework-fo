@@ -1,8 +1,8 @@
-import React, {Component, useState} from 'react';
-import {AgGridReact} from 'ag-grid-react';
+import React, { Component, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import {gridOptions} from './commons/AgGridCmm';
+import { gridOptions } from './commons/AgGridCmm';
 
 const GridRecord = () => {
   const [gridApi, setGridApi] = useState(null);
@@ -45,15 +45,15 @@ const GridRecord = () => {
     }
   ]);
   const [columnDefs, setColumnDefs] = useState([
-    {headerName: '장비명', field: 'equipment'},
-    {headerName: 'Public Ip', field: 'ip'},
-    {headerName: 'OS', field: 'os'},
-    {headerName: '제조사', field: 'company'},
-    {headerName: '템플릿 그룹', field: 'template'},
-    {headerName: 'HW 자원', field: 'hw'},
-    {headerName: '상태', field: 'active'},
-    {headerName: '프록시', field: 'proxy'},
-    {headerName: '사용자', field: 'user'}
+    { headerName: '장비명', field: 'equipment' },
+    { headerName: 'Public Ip', field: 'ip' },
+    { headerName: 'OS', field: 'os' },
+    { headerName: '제조사', field: 'company' },
+    { headerName: '템플릿 그룹', field: 'template' },
+    { headerName: 'HW 자원', field: 'hw' },
+    { headerName: '상태', field: 'active' },
+    { headerName: '프록시', field: 'proxy' },
+    { headerName: '사용자', field: 'user' }
   ]);
 
   //const {columnDefs, data} = this.state;
@@ -76,7 +76,7 @@ const GridRecord = () => {
   // };
 
   return (
-    <div className="ag-theme-alpine" style={{width: '97vw', height: '48vh'}}>
+    <div className="ag-theme-alpine" style={{ width: '97vw', height: '48vh' }}>
       {/*<AgGridReact headerHeight="30" columnDefs={columnDefs} rowData={data} />*/}
       <AgGridReact {...gridOptions} />
     </div>

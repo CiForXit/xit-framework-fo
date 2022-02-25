@@ -10,11 +10,11 @@ export const RootContainer = styled.div<ContainerProps>`
   display: flex;
   flex-direction: ${switchProp('imgPosition', {
     top: 'column',
-    left: 'row',
+    left: 'row'
   })};
   padding: ${switchProp('imgPosition', {
     top: '2rem',
-    left: '0rem',
+    left: '0rem'
   })};
   border-width: ${ifProp('border', '0.25px', '0')};
   border-style: solid;
@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerWrapperProps>`
   margin-bottom: 5rem;
   padding: ${switchProp('imgPosition', {
     top: '0rem',
-    left: '2rem 2rem 0rem 0rem',
+    left: '2rem 2rem 0rem 0rem'
   })};
 `;
 
@@ -50,11 +50,11 @@ export const ImgWrapper = styled.div<ImgWrapperProps>`
   flex-grow: 1;
   padding: ${switchProp('imgPosition', {
     top: '2rem 0rem',
-    left: '0.1rem',
+    left: '0.1rem'
   })};
   padding-right: ${switchProp('imgPosition', {
     top: '0rem',
-    left: '4rem',
+    left: '4rem'
   })};
 `;
 
@@ -85,7 +85,7 @@ export const Title = styled.h5`
 export const Place = styled.span`
   ${theme('fontStyle.h6')}
   color: ${palette('grayscale', 3)};
-  font-weight:bold;
+  font-weight: bold;
   margin-top: 1rem;
 `;
 

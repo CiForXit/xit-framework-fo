@@ -15,14 +15,9 @@ export const Input = styled.input<Props>`
   &::placeholder {
     color: ${palette('grayscale', 4)};
   }
-  background-color: ${ifProp(
-    'disabled',
-    palette('grayscale', 6),
-    palette('white'),
-  )};
+  background-color: ${ifProp('disabled', palette('grayscale', 6), palette('white'))};
 
-  border: 1px solid
-    ${ifProp('invalid', palette('danger'), palette('grayscale', 4))};
+  border: 1px solid ${ifProp('invalid', palette('danger'), palette('grayscale', 4))};
   border-radius: 2px;
 
   &:focus {

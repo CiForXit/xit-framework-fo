@@ -8,11 +8,7 @@ interface Props {
   longitude: number;
   height?: string;
 }
-function KakaoMap({
-  latitude,
-  longitude,
-  height = '28rem',
-}: Props): React.ReactElement {
+function KakaoMap({ latitude, longitude, height = '28rem' }: Props): React.ReactElement {
   const kakaoMapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,12 +16,12 @@ function KakaoMap({
     if (kakaoMapElement) {
       const options = {
         center: new kakao.maps.LatLng(latitude, longitude),
-        level: 3,
+        level: 3
       };
       const kakaoMap = new kakao.maps.Map(kakaoMapElement, options);
       const markerPosition = new kakao.maps.LatLng(latitude, longitude);
       const marker = new kakao.maps.Marker({
-        position: markerPosition,
+        position: markerPosition
       });
 
       marker.setMap(kakaoMap);

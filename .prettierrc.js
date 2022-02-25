@@ -5,5 +5,6 @@ module.exports = {
   singleQuote: true, // 쿼테이션 마크를 1개|2개
   trailingComma: 'none', // 끝에 ','를 붙임('es5'(기본), 'none', 'all' 3개의 옵션)
   tabWidth: 2, // 탭의 넓이
-  printWidth: 140
+  printWidth: 140,
+  useTabs: false
 };

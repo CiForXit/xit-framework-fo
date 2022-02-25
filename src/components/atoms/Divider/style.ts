@@ -8,7 +8,7 @@ interface DividerProps {
 }
 
 export const Divider = styled.hr<DividerProps>`
-  border-width: ${p => p.borderWidth};
-  border-style: ${p => p.type};
-  border-color: ${p => palette('grayscale', p.grayScaleLevel)};
+  border-width: ${(p) => p.borderWidth};
+  border-style: ${(p) => p.type};
+  border-color: ${(p) => palette('grayscale', p.grayScaleLevel)};
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
-import FormInput, {Props as FormInputProps} from 'components/molecules/FormInput';
-import Btn, {Props as BtnProps} from 'components/atoms/Btn';
+import FormInput, { Props as FormInputProps } from 'components/molecules/FormInput';
+import Btn, { Props as BtnProps } from 'components/atoms/Btn';
 
 export interface Props {
   FormInputs: {
@@ -13,7 +13,7 @@ export interface Props {
   Button: BtnProps;
 }
 
-function SignUpForm({FormInputs, Button}: Props): React.ReactElement {
+function SignUpForm({ FormInputs, Button }: Props): React.ReactElement {
   return (
     <S.SignUpFormContainer>
       <FormInput {...FormInputs.email} />

@@ -3,7 +3,7 @@ import Header from '../../components/organisms/Header/Header';
 import Footer from '../../components/organisms/Footer/Footer';
 import SideBar from '../../components/organisms/SideBar/SideBar';
 import Section from '../../components/organisms/Section/Section';
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 /* Global Styled */
 const GlobalStyle = createGlobalStyle`

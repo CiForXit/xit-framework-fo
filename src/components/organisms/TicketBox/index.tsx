@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import * as S from './style';
-import {FaTicketAlt, FaRegCreditCard, FaCheckCircle, FaRegCalendarAlt} from 'react-icons/fa';
-import {IconLabel, Price} from 'components';
-import Btn, {Props as BtnProps} from 'components/atoms/Btn';
-import ChkBox, {Props as ChkBoxProps} from 'components/atoms/ChkBox';
-import {TicketType} from 'types/Data';
-import {default as Theme} from 'commons/style/themes/default';
+import { FaTicketAlt, FaRegCreditCard, FaCheckCircle, FaRegCalendarAlt } from 'react-icons/fa';
+import { IconLabel, Price } from 'components';
+import Btn, { Props as BtnProps } from 'components/atoms/Btn';
+import ChkBox, { Props as ChkBoxProps } from 'components/atoms/ChkBox';
+import { TicketType } from 'types/Data';
+import { default as Theme } from 'commons/style/themes/default';
 
-const {palette} = Theme;
+const { palette } = Theme;
 
 type PickProps = Pick<TicketType, 'price' | 'name' | 'desc' | 'salesEndAt'>;
 export interface Props extends PickProps {
@@ -70,9 +70,7 @@ function TicketBox({
         </S.PriceWrapper>
         <S.Desc>{desc}</S.Desc>
         {showTicketId && <IconLabel icon={<FaTicketAlt size={'1.5rem'} />} labelContent={`Ticket ID ${ticketId}`} />}
-        {showPurchaseDate && (
-          <IconLabel icon={<FaRegCreditCard size={'1.5rem'} />} labelContent={`결제일 ${purchaseDate}`} />
-        )}
+        {showPurchaseDate && <IconLabel icon={<FaRegCreditCard size={'1.5rem'} />} labelContent={`결제일 ${purchaseDate}`} />}
         {showDueDate && (
           <IconLabel
             icon={<FaRegCalendarAlt size={'1.5rem'} />}
@@ -101,13 +99,7 @@ function TicketBox({
           {!showChkIcon && <ChkBox {...chkProps} />}
         </S.ChkBoxContainer>
         {showRefundBtn && refundBtnProps && (
-          <Btn
-            {...refundBtnProps}
-            data-testid={'refund-btn'}
-            fit
-            styletype={'transparent'}
-            children={refundBtnProps.children}
-          />
+          <Btn {...refundBtnProps} data-testid={'refund-btn'} fit styletype={'transparent'} children={refundBtnProps.children} />
         )}
       </S.OptionalContentWrapper>
     </S.Container>

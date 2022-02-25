@@ -21,14 +21,14 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
-  const {onDrawerToggle} = props;
+  const { onDrawerToggle } = props;
 
   return (
     <>
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
-            <Grid sx={{display: {sm: 'none', xs: 'block'}}} item>
+            <Grid sx={{ display: { sm: 'none', xs: 'block' } }} item>
               <IconButton color="inherit" aria-label="open drawer" onClick={onDrawerToggle} edge="start">
                 <MenuIcon />
               </IconButton>
@@ -58,14 +58,14 @@ export default function Header(props: HeaderProps) {
               </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton color="inherit" sx={{p: 0.5}}>
+              <IconButton color="inherit" sx={{ p: 0.5 }}>
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
               </IconButton>
             </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
-      <AppBar component="div" color="primary" position="static" elevation={0} sx={{zIndex: 0}}>
+      <AppBar component="div" color="primary" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Toolbar>
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>

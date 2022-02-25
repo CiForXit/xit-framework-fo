@@ -1,15 +1,15 @@
 import React from 'react';
 
 import * as S from './style';
-import Counter, {Props as CounterProps} from 'components/molecules/Counter';
+import Counter, { Props as CounterProps } from 'components/molecules/Counter';
 
 interface Props {
   label: string;
   counterProps: CounterProps;
 }
 
-function CounterBox({label, counterProps}: Props): React.ReactElement {
-  const {maxCount} = counterProps;
+function CounterBox({ label, counterProps }: Props): React.ReactElement {
+  const { maxCount } = counterProps;
 
   return (
     <S.Container data-testid={'counterbox-container'}>

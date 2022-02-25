@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import * as S from './style';
-import {LNBItem} from 'components';
+import { LNBItem } from 'components';
 
 export interface Props {
   items: string[];
@@ -9,7 +9,7 @@ export interface Props {
   onTabClicked?: (tabIndex: number) => void;
 }
 
-function LNB({items, tabIndex = 1, onTabClicked}: Props): React.ReactElement {
+function LNB({ items, tabIndex = 1, onTabClicked }: Props): React.ReactElement {
   const [currentTabIndex, setCurrentTabIndex] = useState(tabIndex);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ interface Props {
   cardGrid: React.ReactNode;
 }
 
-function MainTemplate({mainBanner, cardGrid}: Props): React.ReactElement {
+function MainTemplate({ mainBanner, cardGrid }: Props): React.ReactElement {
   return (
     <BasedTemplate>
       {/*<S.MainBannerContainer>{mainBanner}</S.MainBannerContainer>*/}

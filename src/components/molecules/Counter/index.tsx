@@ -9,21 +9,13 @@ export interface Props {
   handler?: (count: number) => void;
 }
 
-export function increase(
-  count: number,
-  maxCount: number,
-  setCount: Dispatch<number>,
-) {
+export function increase(count: number, maxCount: number, setCount: Dispatch<number>) {
   if (count < maxCount) {
     setCount(count + 1);
   }
 }
 
-export function decrease(
-  count: number,
-  minCount: number,
-  setCount: Dispatch<number>,
-) {
+export function decrease(count: number, minCount: number, setCount: Dispatch<number>) {
   if (count > minCount) {
     setCount(count - 1);
   }
@@ -56,14 +48,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
     } else if (rightArrowDisabled) {
       setRightArrowDisabled(false);
     }
-  }, [
-    count,
-    minCount,
-    maxCount,
-    handler,
-    leftArrowDisabled,
-    rightArrowDisabled,
-  ]);
+  }, [count, minCount, maxCount, handler, leftArrowDisabled, rightArrowDisabled]);
 
   return (
     <S.Container>
@@ -71,8 +56,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
         disabled={leftArrowDisabled}
         onClick={() => {
           callbackDecrease();
-        }}
-      >
+        }}>
         <FaChevronLeft color={'white'} size={'2rem'} />
       </S.ArrowWrapper>
       <S.Count>{count}</S.Count>
@@ -80,8 +64,7 @@ function Counter({ minCount, maxCount, handler }: Props): React.ReactElement {
         disabled={rightArrowDisabled}
         onClick={() => {
           callbackIncrease();
-        }}
-      >
+        }}>
         <FaChevronRight color={'white'} size={'2rem'} />
       </S.ArrowWrapper>
     </S.Container>

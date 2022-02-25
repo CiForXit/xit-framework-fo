@@ -1,17 +1,17 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import moment, {Moment} from 'moment';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import moment, { Moment } from 'moment';
 import 'react-dates/initialize';
-import {SingleDatePicker} from 'react-dates';
+import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import {Label, TimePicker} from 'components';
-import {DATE_PICKER_RANGE_CAPTION, DATE_PICKER_SINGLE_CAPTION} from 'commons/constants/string';
+import { Label, TimePicker } from 'components';
+import { DATE_PICKER_RANGE_CAPTION, DATE_PICKER_SINGLE_CAPTION } from 'commons/constants/string';
 import * as S from './style';
 
 interface Props {
   range: boolean;
   firstLabelName: string;
   secondLabelName?: string;
-  handleOnChange?: ({startAt, endAt, valid}: {startAt: string; endAt?: string; valid: boolean}) => void;
+  handleOnChange?: ({ startAt, endAt, valid }: { startAt: string; endAt?: string; valid: boolean }) => void;
 }
 
 const validateDate = (startDate: Moment, endDate: Moment, range: boolean): boolean =>
@@ -46,7 +46,7 @@ const handleOnFocusChange = ({
     }
   }
 };
-function DateTimePicker({range, firstLabelName, secondLabelName = '종료', handleOnChange}: Props): React.ReactElement {
+function DateTimePicker({ range, firstLabelName, secondLabelName = '종료', handleOnChange }: Props): React.ReactElement {
   const [startDate, setStartDate] = useState<Moment | null>(moment());
   const [focusStartDate, setFocusStartDate] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<string>('00:00');
@@ -69,7 +69,7 @@ function DateTimePicker({range, firstLabelName, secondLabelName = '종료', hand
           endAt: new Date(endAt).toISOString(),
           valid
         });
-      handleOnChange({startAt: '', endAt: '', valid});
+      handleOnChange({ startAt: '', endAt: '', valid });
     },
     [handleOnChange]
   );
@@ -94,7 +94,7 @@ function DateTimePicker({range, firstLabelName, secondLabelName = '종료', hand
               date={startDate}
               onDateChange={setStartDate}
               focused={focusStartDate}
-              onFocusChange={({focused}): void =>
+              onFocusChange={({ focused }): void =>
                 handleOnFocusChange({
                   target: 'startDate',
                   focused,
@@ -123,7 +123,7 @@ function DateTimePicker({range, firstLabelName, secondLabelName = '종료', hand
                 date={endDate}
                 onDateChange={setEndDate}
                 focused={focusEndDate}
-                onFocusChange={({focused}): void =>
+                onFocusChange={({ focused }): void =>
                   handleOnFocusChange({
                     target: 'endDate',
                     focused,

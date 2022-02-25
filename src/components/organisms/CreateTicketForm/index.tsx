@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import {ChkBox, FormItem, Input, InputOnlyNumber, DateTimePicker} from 'components';
+import { ChkBox, FormItem, Input, InputOnlyNumber, DateTimePicker } from 'components';
 import {
   TICKET_FORM_NAME,
   TICKET_FORM_NAME_LABEL,
@@ -54,39 +54,27 @@ export interface Props {
     };
     salesDate: {
       invalid?: boolean;
-      handleOnChange?: ({startAt, endAt, valid}: {startAt: string; endAt?: string; valid: boolean}) => void;
+      handleOnChange?: ({ startAt, endAt, valid }: { startAt: string; endAt?: string; valid: boolean }) => void;
     };
     refundDate: {
       invalid?: boolean;
-      handleOnChange?: ({startAt, endAt, valid}: {startAt: string; endAt?: string; valid: boolean}) => void;
+      handleOnChange?: ({ startAt, endAt, valid }: { startAt: string; endAt?: string; valid: boolean }) => void;
     };
   };
 }
-function CreateTicketForm({FormInputs}: Props): React.ReactElement {
+function CreateTicketForm({ FormInputs }: Props): React.ReactElement {
   return (
     <S.CreateTicketFormContainer>
-      <FormItem
-        label={TICKET_FORM_NAME}
-        labelExplanation={TICKET_FORM_NAME_LABEL}
-        captionContent={TICKET_FORM_NAME_CAPTION}>
+      <FormItem label={TICKET_FORM_NAME} labelExplanation={TICKET_FORM_NAME_LABEL} captionContent={TICKET_FORM_NAME_CAPTION}>
         <Input inputName="ticketName" placeholder={TICKET_FORM_NAME_PLACEHOLDER} {...FormInputs.name} />
       </FormItem>
-      <FormItem
-        label={TICKET_FORM_DESC}
-        labelExplanation={TICKET_FORM_DESC_LABEL}
-        captionContent={TICKET_FORM_DESC_CAPTION}>
+      <FormItem label={TICKET_FORM_DESC} labelExplanation={TICKET_FORM_DESC_LABEL} captionContent={TICKET_FORM_DESC_CAPTION}>
         <Input inputName="ticketDesc" placeholder={TICKET_FORM_DESC_PLACEHOLDER} {...FormInputs.desc} />
       </FormItem>
-      <FormItem
-        label={TICKET_FORM_PRICE}
-        labelExplanation={TICKET_FORM_PRICE_LABEL}
-        captionContent={TICKET_FORM_PRICE_CAPTION}>
+      <FormItem label={TICKET_FORM_PRICE} labelExplanation={TICKET_FORM_PRICE_LABEL} captionContent={TICKET_FORM_PRICE_CAPTION}>
         <InputOnlyNumber inputName="ticketPrice" prefix="₩" {...FormInputs.price} />
       </FormItem>
-      <FormItem
-        label={TICKET_FORM_QUANTITY}
-        labelExplanation={TICKET_FORM_QUANTITY_LABEL}
-        captionContent={TICKET_FORM_QUANTITY_CAPTION}>
+      <FormItem label={TICKET_FORM_QUANTITY} labelExplanation={TICKET_FORM_QUANTITY_LABEL} captionContent={TICKET_FORM_QUANTITY_CAPTION}>
         <InputOnlyNumber inputName="ticketQuantity" {...FormInputs.quantity} />
       </FormItem>
       <FormItem label={TICKET_FORM_IS_PUBLIC_LEFT_CNT} labelExplanation={TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL}>

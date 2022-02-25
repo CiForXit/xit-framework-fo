@@ -17,11 +17,7 @@ export const Wrapper = styled.div<Props>`
 `;
 
 export const Container = styled.div`
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 
   display: flex;
   justify-content: center;

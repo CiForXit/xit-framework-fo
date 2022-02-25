@@ -7,8 +7,7 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   ${theme('fontStyle.h6')};
-  border-bottom: 0.3rem solid
-    ${ifProp('active', palette('grayscale', 1), palette('white'))};
+  border-bottom: 0.3rem solid ${ifProp('active', palette('grayscale', 1), palette('white'))};
   color: ${palette('grayscale', 1)};
   padding: 2rem;
   font-weight: bold;

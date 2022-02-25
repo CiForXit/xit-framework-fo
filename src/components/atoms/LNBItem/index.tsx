@@ -7,22 +7,17 @@ export interface Props {
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-function LNBItem({
-  children,
-  active = false,
-  onClick,
-}: Props): React.ReactElement {
+function LNBItem({ children, active = false, onClick }: Props): React.ReactElement {
   const [isActive, setIsActive] = useState(active);
 
   return (
     <S.Container
       active={isActive}
-      onClick={event => {
+      onClick={(event) => {
         onClick && onClick(event);
         !isActive && setIsActive(true);
       }}
-      data-testid={'lnb-item'}
-    >
+      data-testid={'lnb-item'}>
       {children}
     </S.Container>
   );

@@ -91,8 +91,7 @@ export const TICKET_FORM_QUANTITY = '티켓 수량';
 export const TICKET_FORM_QUANTITY_LABEL = '판매하고 싶은 최대 수량을 정해주세요.';
 export const TICKET_FORM_QUANTITY_CAPTION = '티켓 수량을 입력해주세요.';
 export const TICKET_FORM_IS_PUBLIC_LEFT_CNT = '티켓 수량 숨김';
-export const TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL =
-  '티켓의 전체 수량과 남은 개수를 표시하지 않습니다. 판매된 개수는 항상 표시됩니다.';
+export const TICKET_FORM_IS_PUBLIC_LEFT_CNT_LABEL = '티켓의 전체 수량과 남은 개수를 표시하지 않습니다. 판매된 개수는 항상 표시됩니다.';
 export const TICKET_FORM_MAX_CNT_PER_PERSON = '1인당 구매 가능 개수';
 export const TICKET_FORM_MAX_CNT_PER_PERSON_LABEL = '유저 1명이 구입할 수 있는 최대 개수입니다.';
 export const TICKET_FORM_MAX_CNT_PER_PERSON_CAPTION = '1인당 구매 가능 개수를 입력해주세요.';

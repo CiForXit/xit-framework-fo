@@ -1,7 +1,7 @@
-import {ACCESS_TOKEN_NAME, IUser} from 'types/AuthModel';
+import { ACCESS_TOKEN_NAME, IUser } from 'types/AuthModel';
 import reqApi from './ApiService';
-import {LOGIN_URL} from 'commons/constants/ApiUrl';
-import {IApiResponse} from 'types/ApiModel';
+import { LOGIN_URL } from 'commons/constants/ApiUrl';
+import { IApiResponse } from 'types/ApiModel';
 
 const BACKEND_URL = process.env.REACT_APP_API_URL;
 const OAUTH2_REDIRECT_URI = 'http://localhost:3000/oauth2/redirect'; //process.env.REACT_OAUTH2_REDIRECT_URI;

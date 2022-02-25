@@ -16,7 +16,7 @@ const Container = styled.div`
 /* Main Compoent */
 const Footer = (props) => {
   /* Props */
-  const {className} = props;
+  const { className } = props;
 
   /* Renderer */
   return <Container className={className}>Footer</Container>;

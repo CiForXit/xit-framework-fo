@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './style';
-import {Label} from 'components';
+import { Label } from 'components';
 
 export interface Props {
   label: string;

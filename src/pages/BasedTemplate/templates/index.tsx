@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as S from './style';
 import ROUTES from 'commons/constants/routes';
-import {Divider, Footer, Header, Loading} from 'components';
+import { Divider, Footer, Header, Loading } from 'components';
 
 interface Props {
   loading?: boolean;
@@ -11,12 +11,7 @@ interface Props {
   hasHeaderLine?: boolean;
 }
 
-function BasedTemplate({
-  children,
-  loading = false,
-  internalServerError = false,
-  hasHeaderLine = false
-}: Props): React.ReactElement {
+function BasedTemplate({ children, loading = false, internalServerError = false, hasHeaderLine = false }: Props): React.ReactElement {
   const conditionalRender = () => {
     if (internalServerError)
       return (

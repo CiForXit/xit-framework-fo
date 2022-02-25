@@ -4,11 +4,7 @@ import { theme, ifProp, palette } from 'styled-tools';
 const StepText = css`
   ${theme('fontStyle.subtitle2')};
   font-weight: bold;
-  color: ${ifProp(
-    'highlight',
-    palette('grayscale', 1),
-    palette('grayscale', 3),
-  )};
+  color: ${ifProp('highlight', palette('grayscale', 1), palette('grayscale', 3))};
 `;
 
 interface StepProps {

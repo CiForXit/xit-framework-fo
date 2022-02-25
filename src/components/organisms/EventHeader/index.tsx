@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import * as S from './style';
-import {IconBtn, Price, EventDate} from 'components';
-import {User, TicketType} from 'types/Data';
-import {FaUsers, FaExternalLinkAlt} from 'react-icons/fa';
-import {RESERVE_DONE, RESERVE_SOLD_OUT, RESERVE_EXPIRE, RESERVE} from 'commons/constants/string';
-import moment, {Moment} from 'moment';
+import { IconBtn, Price, EventDate } from 'components';
+import { User, TicketType } from 'types/Data';
+import { FaUsers, FaExternalLinkAlt } from 'react-icons/fa';
+import { RESERVE_DONE, RESERVE_SOLD_OUT, RESERVE_EXPIRE, RESERVE } from 'commons/constants/string';
+import moment, { Moment } from 'moment';
 
 interface Props {
   id: number;
@@ -86,19 +86,9 @@ function useEventBtn(salesStartAt: string, doneEventType?: number): SubmitBtnSta
   return btn;
 }
 
-function EventHeader({
-  id: eventId,
-  mainImg,
-  title,
-  place,
-  startAt,
-  endAt,
-  user,
-  ticketType,
-  doneEventType
-}: Props): React.ReactElement {
+function EventHeader({ id: eventId, mainImg, title, place, startAt, endAt, user, ticketType, doneEventType }: Props): React.ReactElement {
   const ticketInfo = ticketType;
-  const {firstName, lastName} = user;
+  const { firstName, lastName } = user;
   const profileImgUrl = 'https://kr.object.ncloudstorage.com/bookus/defaultProfileImg.png';
   const submitBtnState = useEventBtn(ticketType.salesStartAt, doneEventType);
 
@@ -141,11 +131,7 @@ function EventHeader({
             {!ticketInfo.isPublicLeftCnt ? '비공개' : `${ticketInfo.quantity - ticketInfo.leftCnt}명`}
           </S.ReservedPeople>
         </S.ReservedPeopleContainer>
-        <S.SubmitBtn
-          data-testid={'event-detail-submit-btn'}
-          {...submitBtnState}
-          to={`/events/${eventId}/register/tickets`}
-        />
+        <S.SubmitBtn data-testid={'event-detail-submit-btn'} {...submitBtnState} to={`/events/${eventId}/register/tickets`} />
       </S.SubmitContainer>
     </S.HeaderContainer>
   );

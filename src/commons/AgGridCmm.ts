@@ -1,6 +1,6 @@
-import {GridOptions, RowClassParams, RowStyle} from 'ag-grid-community';
-import {RefObject, useCallback} from 'react';
-import {AgGridReact} from '@ag-grid-community/react';
+import { GridOptions, RowClassParams, RowStyle } from 'ag-grid-community';
+import { RefObject, useCallback } from 'react';
+import { AgGridReact } from '@ag-grid-community/react';
 
 export const getGridOptions = () => {
   return gridOptions;
@@ -50,7 +50,7 @@ export const gridOptions: GridOptions = {
   //suppressHorizontalScroll: true,
 
   // 데이타가 없는 경우 보여줄 메세지
-  localeText: {noRowsToShow: '조회 결과가 없습니다.'},
+  localeText: { noRowsToShow: '조회 결과가 없습니다.' },
 
   tooltipMouseTrack: true,
 
@@ -98,9 +98,9 @@ export const gridOptions: GridOptions = {
   //
   getRowStyle: (param: RowClassParams): RowStyle => {
     if (param.node.rowPinned) {
-      return {'font-weight': 'bold', background: '#dddddd'};
+      return { 'font-weight': 'bold', background: '#dddddd' };
     }
-    return {textAlign: 'center'};
+    return { textAlign: 'center' };
   },
 
   getRowHeight: function (param) {

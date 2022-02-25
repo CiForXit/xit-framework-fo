@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components';
-import {palette, theme} from 'styled-tools';
-import {fadeIn, fadeOut} from 'commons/style/animations';
+import styled, { css } from 'styled-components';
+import { palette, theme } from 'styled-tools';
+import { fadeIn, fadeOut } from 'commons/style/animations';
 
 interface FormItemContainerProps {
   direction: string;

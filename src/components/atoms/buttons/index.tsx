@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
-import {ButtonPropsType} from 'types/atomsTypes';
-import {COLOR_PALLETE, SHADOW, TRANSFORM} from 'commons/style/_designTokens';
+import styled, { css } from 'styled-components';
+import { ButtonPropsType } from 'types/atomsTypes';
+import { COLOR_PALLETE, SHADOW, TRANSFORM } from 'commons/style/_designTokens';
 
 export default function DefaultButton(props: ButtonPropsType): React.ReactElement {
-  const {text, textColor, size, callback} = props;
+  const { text, textColor, size, callback } = props;
   return (
     <Button color={textColor} size={size} onClick={() => callback}>
       {text}
@@ -30,7 +30,7 @@ const Button = styled.button`
     transform: ${TRANSFORM.defaultPosition};
   }
 
-  ${(props: {size: string | undefined}) =>
+  ${(props: { size: string | undefined }) =>
     props.size === 'large' &&
     css`
       width: 200px;
@@ -38,7 +38,7 @@ const Button = styled.button`
       font-size: 1.1rem;
       border-radius: 8px;
     `}
-  ${(props: {size: string | undefined}) =>
+  ${(props: { size: string | undefined }) =>
     props.size === 'medium' &&
     css`
       width: 150px;
@@ -46,7 +46,7 @@ const Button = styled.button`
       font-size: 1rem;
       border-radius: 7px;
     `}
-    ${(props: {size: string | undefined}) =>
+    ${(props: { size: string | undefined }) =>
     props.size === 'small' &&
     css`
       width: 100px;

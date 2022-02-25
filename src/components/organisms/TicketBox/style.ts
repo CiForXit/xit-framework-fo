@@ -11,11 +11,7 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: space-between;
   padding: 2rem 3rem;
-  background-color: ${ifProp(
-    'checked',
-    'rgb(254, 244, 223)',
-    palette('grayscale', 6),
-  )};
+  background-color: ${ifProp('checked', 'rgb(254, 244, 223)', palette('grayscale', 6))};
   border-radius: 0.3rem;
   color: ${palette('grayscale', 1)};
 `;

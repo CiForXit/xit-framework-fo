@@ -1,12 +1,11 @@
-import React, {forwardRef, useImperativeHandle, useState} from 'react';
-import {render} from 'react-dom';
-import {AgGridReact, AgGridColumn} from 'ag-grid-react';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import { render } from 'react-dom';
+import { AgGridReact, AgGridColumn } from 'ag-grid-react';
 // import "ag-grid-community/dist/styles/ag-grid.css";
 // import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 const MoodRenderer = forwardRef((props, ref) => {
-  const imageForMood = (mood) =>
-    'https://www.ag-grid.com/example-assets/smileys/' + (mood === 'Happy' ? 'happy.png' : 'sad.png');
+  const imageForMood = (mood) => 'https://www.ag-grid.com/example-assets/smileys/' + (mood === 'Happy' ? 'happy.png' : 'sad.png');
 
   const [mood, setMood] = useState(imageForMood(props.value));
 
@@ -50,7 +49,7 @@ const CellRendering = () => {
   };
 
   return (
-    <div style={{width: '100%', height: '500px'}}>
+    <div style={{ width: '100%', height: '500px' }}>
       <h2>cell render</h2>
       <div
         id="myGrid"
@@ -86,7 +85,7 @@ const CellRendering = () => {
               type: 'mood'
             }
           ]}
-          defaultColDef={{flex: 1}}
+          defaultColDef={{ flex: 1 }}
           frameworkComponents={{
             genderCellRenderer: GenderRenderer,
             moodCellRenderer: MoodRenderer,
@@ -100,7 +99,7 @@ const CellRendering = () => {
             headerName="Rendered Value"
             field="value"
             cellRendererSelector={(params) => {
-              const moodDetails = {component: 'moodCellRenderer'};
+              const moodDetails = { component: 'moodCellRenderer' };
               const genderDetails = {
                 component: 'genderCellRenderer',
                 params: {
@@ -117,7 +116,7 @@ const CellRendering = () => {
             headerName="my render"
             field="value"
             cellRendererSelector={(params) => {
-              const moodDetails = {component: 'myCellRenderer'};
+              const moodDetails = { component: 'myCellRenderer' };
               const genderDetails = {
                 component: 'myCellRenderer',
                 params: {

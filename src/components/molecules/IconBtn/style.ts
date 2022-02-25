@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {ifProp} from 'styled-tools';
-import {Icon, Btn} from 'components';
+import { ifProp } from 'styled-tools';
+import { Icon, Btn } from 'components';
 
 export const CircleIconImg = styled(Icon)``;
 

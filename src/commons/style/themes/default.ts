@@ -8,17 +8,8 @@ const theme = {
     white: '#fff',
     black: '#212121',
     transparent: 'transparent',
-    grayscale: [
-      '#212121',
-      '#414141',
-      '#616161',
-      '#9e9e9e',
-      '#bdbdbd',
-      '#e0e0e0',
-      '#eeeeee',
-      '#ffffff',
-    ],
-    opacityscale: [0.9, 0.8, 0.7, 0.6, 0.5],
+    grayscale: ['#212121', '#414141', '#616161', '#9e9e9e', '#bdbdbd', '#e0e0e0', '#eeeeee', '#ffffff'],
+    opacityscale: [0.9, 0.8, 0.7, 0.6, 0.5]
   },
 
   fontStyle: {
@@ -84,8 +75,8 @@ const theme = {
       font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.015rem;
-    `,
-  },
+    `
+  }
 };
 
 export default theme;

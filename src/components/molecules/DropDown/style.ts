@@ -5,7 +5,7 @@ interface DropDownProps {
   visible: boolean;
 }
 export const DropDown = styled.ul<DropDownProps>`
-  visibility: ${props => (props.visible ? 'visible' : 'hidden')};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   position: absolute;
   background-color: white;
   padding: 0;

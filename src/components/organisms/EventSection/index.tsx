@@ -19,21 +19,9 @@ export interface Props {
   border?: boolean;
 }
 
-function EventSection({
-  title,
-  subtitle,
-  content,
-  place,
-  imgSrc = '',
-  imgPosition = 'top',
-  border = false,
-}: Props): React.ReactElement {
+function EventSection({ title, subtitle, content, place, imgSrc = '', imgPosition = 'top', border = false }: Props): React.ReactElement {
   return (
-    <S.RootContainer
-      data-testid={'event-section'}
-      border={border}
-      imgPosition={imgPosition}
-    >
+    <S.RootContainer data-testid={'event-section'} border={border} imgPosition={imgPosition}>
       {imgSrc !== '' && (
         <S.ImgWrapper imgPosition={imgPosition}>
           <S.Img src={imgSrc} />
@@ -51,7 +39,7 @@ function EventSection({
                   <S.Content>{content[i]}</S.Content>
                 </S.EachContentContainer>
               );
-            }),
+            })
           ]}
         </S.ContentContainer>
       </S.Container>

@@ -9,7 +9,7 @@ export interface PriceProps {
   separated?: boolean;
 }
 
-function Price({children, currency = '₩', separated = false}: PriceProps): React.ReactElement {
+function Price({ children, currency = '₩', separated = false }: PriceProps): React.ReactElement {
   return (
     <S.Wrapper>
       {+children === 0

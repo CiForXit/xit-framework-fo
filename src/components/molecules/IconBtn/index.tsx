@@ -1,8 +1,8 @@
 import React from 'react';
 
 import * as S from './style';
-import {Props as BtnProps} from 'components/atoms/Btn';
-import {IconType} from 'react-icons';
+import { Props as BtnProps } from 'components/atoms/Btn';
+import { IconType } from 'react-icons';
 
 type CustomBtnProps = Omit<BtnProps, 'children'>;
 
@@ -35,14 +35,7 @@ function IconBtn({
     <S.RootWrapper fullid={fullid}>
       <S.ContainerWrapper {...btnProps}>
         <S.ContentContainer>
-          {circleImgSrc && (
-            <S.CircleIconImg
-              alt={'icon'}
-              circular={true}
-              src={circleImgSrc}
-              height={`${parseInt(IconHeight) + 2}rem`}
-            />
-          )}
+          {circleImgSrc && <S.CircleIconImg alt={'icon'} circular={true} src={circleImgSrc} height={`${parseInt(IconHeight) + 2}rem`} />}
           <S.Content>{children}</S.Content>
           {icon && (
             <S.IconWrapper>

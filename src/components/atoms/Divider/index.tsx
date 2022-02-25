@@ -10,18 +10,8 @@ export interface Props {
   grayScaleLevel?: number;
 }
 
-function Divider({
-  borderWidth = '1px',
-  type = 'solid',
-  grayScaleLevel = 5,
-}: Props): React.ReactElement {
-  return (
-    <S.Divider
-      borderWidth={borderWidth}
-      type={type}
-      grayScaleLevel={grayScaleLevel}
-    />
-  );
+function Divider({ borderWidth = '1px', type = 'solid', grayScaleLevel = 5 }: Props): React.ReactElement {
+  return <S.Divider borderWidth={borderWidth} type={type} grayScaleLevel={grayScaleLevel} />;
 }
 
 export default Divider;

@@ -1,9 +1,9 @@
 import produce from 'immer';
 
-import {EventDetail} from 'types/Data';
-import {EventsState} from 'types/States';
-import {EventsAction} from 'types/Actions';
-import {ACTION_OPST_OPEN, ACTION_FETCH_EVENTS, ACTION_ERROR} from 'commons/constants/string';
+import { EventDetail } from 'types/Data';
+import { EventsState } from 'types/States';
+import { EventsAction } from 'types/Actions';
+import { ACTION_OPST_OPEN, ACTION_FETCH_EVENTS, ACTION_ERROR } from 'commons/constants/string';
 
 export const defaultEventsState: EventsState = {
   events: new Map<number, EventDetail>(),
@@ -11,20 +11,13 @@ export const defaultEventsState: EventsState = {
   status: 0
 };
 
-const produceMap = (
-  sourceMap: Map<number, EventDetail>,
-  targetMap: Map<number, EventDetail>
-): Map<number, EventDetail> =>
+const produceMap = (sourceMap: Map<number, EventDetail>, targetMap: Map<number, EventDetail>): Map<number, EventDetail> =>
   produce(sourceMap, (draft) => {
     targetMap.forEach((value) => {
       draft.set(value.id, value);
     });
   });
-const produceUniqueOrder = (
-  sourceMap: Map<number, EventDetail>,
-  sourceOrder: number[],
-  targetOrder: number[]
-): number[] =>
+const produceUniqueOrder = (sourceMap: Map<number, EventDetail>, sourceOrder: number[], targetOrder: number[]): number[] =>
   targetOrder.reduce((order, eventId) => {
     if (sourceMap.has(eventId)) return order;
     return [...order, eventId];

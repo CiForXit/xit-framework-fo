@@ -17,7 +17,7 @@ const List = styled.ul`
 /* Main Compoent */
 const SideBarNav = (props) => {
   /* Props */
-  const {className, items} = props;
+  const { className, items } = props;
 
   /* Renderer */
   return <List className={className}>{items && items.map((opt, idx) => <SideBarNavItem key={idx} {...opt} />)}</List>;

@@ -19,7 +19,7 @@ const Container = styled.div`
 /* Main Compoent */
 const Header = (props) => {
   /* Props */
-  const {className} = props;
+  const { className } = props;
 
   /* Renderer */
   return <Container className={className}>Header</Container>;

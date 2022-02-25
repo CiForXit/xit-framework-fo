@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import {
   Avatar,
@@ -14,9 +14,9 @@ import {
   Typography,
   Container
 } from '@mui/material';
-import {createTheme, ThemeProvider} from '@mui/material';
-import {styled} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { styled } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const FormHelperTexts = styled(FormHelperText)`
   width: 100%;
@@ -44,8 +44,8 @@ const Signin = () => {
   };
 
   const onhandlePost = async (data) => {
-    const {email, name, password} = data;
-    const postData = {email, name, password};
+    const { email, name, password } = data;
+    const postData = { email, name, password };
 
     // post
     await axios
@@ -70,11 +70,10 @@ const Signin = () => {
       password: data.get('password'),
       rePassword: data.get('rePassword')
     };
-    const {age, city, email, name, password, rePassword} = joinData;
+    const { age, city, email, name, password, rePassword } = joinData;
 
     // 이메일 유효성 체크
-    const emailRegex =
-      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (!emailRegex.test(email)) setEmailError('올바른 이메일 형식이 아닙니다.');
     else setEmailError('');
 
@@ -95,13 +94,7 @@ const Signin = () => {
     // 회원가입 동의 체크
     if (!checked) alert('회원가입 약관에 동의해주세요.');
 
-    if (
-      emailRegex.test(email) &&
-      passwordRegex.test(password) &&
-      password === rePassword &&
-      nameRegex.test(name) &&
-      checked
-    ) {
+    if (emailRegex.test(email) && passwordRegex.test(password) && password === rePassword && nameRegex.test(name) && checked) {
       onhandlePost(joinData);
     }
   };
@@ -117,17 +110,17 @@ const Signin = () => {
             flexDirection: 'column',
             alignItems: 'center'
           }}>
-          <Avatar sx={{m: 1, bgcolor: 'secondary.main'}} />
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
           <Typography component="h1" variant="h5">
             회원가입
           </Typography>
-          <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
+          <Boxs component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <FormControl component="fieldset" variant="standard">
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
                     required
-                    autoFocus
+                    //autoFocus
                     fullWidth
                     type="email"
                     id="email"
@@ -166,13 +159,10 @@ const Signin = () => {
                 </Grid>
                 <FormHelperTexts>{nameError}</FormHelperTexts>
                 <Grid item xs={12}>
-                  <FormControlLabel
-                    control={<Checkbox onChange={handleAgree} color="primary" />}
-                    label="회원가입 약관에 동의합니다."
-                  />
+                  <FormControlLabel control={<Checkbox onChange={handleAgree} color="primary" />} label="회원가입 약관에 동의합니다." />
                 </Grid>
               </Grid>
-              <Button type="submit" fullWidth variant="contained" sx={{mt: 3, mb: 2}} size="large">
+              <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} size="large">
                 회원가입
               </Button>
             </FormControl>

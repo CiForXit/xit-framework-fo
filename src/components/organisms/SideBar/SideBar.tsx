@@ -22,7 +22,7 @@ const Container = styled.div`
 
 /* Constant Variables */
 const items = [
-  {label: '공지사항', href: '/board'},
+  { label: '공지사항', href: '/board' },
   {
     label: '주정차 의견진술',
     href: '/home',
@@ -31,14 +31,14 @@ const items = [
         label: '주정차 의견진술 심의목록',
         href: ''
       },
-      {label: '주정차 의견진술 심의등록', href: ''}
+      { label: '주정차 의견진술 심의등록', href: '' }
     ]
   },
-  {label: '거주자 의견진술', href: ''},
-  {label: '장애인 의견진술', href: ''},
-  {label: '사용자 관리', href: ''},
-  {label: 'SMS 관리', href: ''},
-  {label: '게시판 관리', href: ''}
+  { label: '거주자 의견진술', href: '' },
+  { label: '장애인 의견진술', href: '' },
+  { label: '사용자 관리', href: '' },
+  { label: 'SMS 관리', href: '' },
+  { label: '게시판 관리', href: '' }
 ];
 
 //const it1 = [];

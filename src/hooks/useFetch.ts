@@ -1,6 +1,6 @@
-import axios, {AxiosRequestConfig} from 'axios';
-import {useReducer, useEffect} from 'react';
-import {OK, NOT_FOUND, INTERNAL_SERVER_ERROR} from 'http-status';
+import axios, { AxiosRequestConfig } from 'axios';
+import { useReducer, useEffect } from 'react';
+import { OK, NOT_FOUND, INTERNAL_SERVER_ERROR } from 'http-status';
 import delay from 'utils/delay';
 
 export interface FetchProps<T> {
@@ -15,15 +15,15 @@ interface Reducer<T> {
 }
 
 function reducer<T = any>(result: FetchProps<T>, action: FetchProps<T>): FetchProps<T> {
-  const {type} = action;
+  const { type } = action;
 
   switch (type) {
     case 'request':
-      return {type};
+      return { type };
     case 'success':
-      return {type, data: action.data, status: action.status};
+      return { type, data: action.data, status: action.status };
     case 'failure':
-      return {type, err: action.err, status: action.status};
+      return { type, err: action.err, status: action.status };
   }
   return result;
 }
@@ -37,13 +37,12 @@ export default function useFetch<T>(axiosOptions: AxiosRequestConfig): FetchProp
     let retry = true;
     const fetchData = async () => {
       try {
-        const {status, data} = await axios(axiosOptions);
+        const { status, data } = await axios(axiosOptions);
         if (status === OK) {
-          dispatch({type: 'success', data, status});
+          dispatch({ type: 'success', data, status });
         }
       } catch (err: any) {
-        if (err.response && err.response.status === NOT_FOUND)
-          return dispatch({type: 'failure', err, status: NOT_FOUND});
+        if (err.response && err.response.status === NOT_FOUND) return dispatch({ type: 'failure', err, status: NOT_FOUND });
         if (!retry)
           return dispatch({
             type: 'failure',

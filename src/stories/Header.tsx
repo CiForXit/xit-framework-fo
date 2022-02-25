@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {Button} from './Button';
+import { Button } from './Button';
 import './header.css';
-import {Helmet} from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 interface HeaderProps {
   user?: {};
@@ -11,7 +11,7 @@ interface HeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header = ({user, onLogin, onLogout, onCreateAccount}: HeaderProps) => (
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
   <header>
     <div className="wrapper">
       <div>

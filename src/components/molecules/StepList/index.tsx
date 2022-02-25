@@ -14,15 +14,9 @@ function StepList({ steps, pivot }: Props): React.ReactElement {
     <S.Container>
       {steps.map((step, index, arr) => (
         <React.Fragment key={index}>
-          <S.Step
-            highlight={index <= pivot - 1}
-            data-testid={'steplist-step'}
-          >{`${index + 1}. ${step}`}</S.Step>
+          <S.Step highlight={index <= pivot - 1} data-testid={'steplist-step'}>{`${index + 1}. ${step}`}</S.Step>
           {index < arr.length - 1 && (
-            <S.StepArrow
-              highlight={index + 1 <= pivot - 1}
-              data-testid={'steplist-step-arrow'}
-            >
+            <S.StepArrow highlight={index + 1 <= pivot - 1} data-testid={'steplist-step-arrow'}>
               &gt;
             </S.StepArrow>
           )}
