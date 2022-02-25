@@ -37,7 +37,7 @@ import Layout from '../Layout/Layout';
 import Paperbase from '../paperbase/Paperbase';
 //import 'commons/style/agGrid.css';
 
-const Board = (props) => {
+const Board1 = (props) => {
   const [gridApi, setGridApi] = useState<GridApi>();
   const [columnApi, setColumnApi] = useState<ColumnApi>();
   const [rowData, setRowData] = useState<[IBoard]>();
@@ -259,7 +259,7 @@ const Board = (props) => {
   }
 
   return (
-    <Paperbase>
+    <Layout>
       <div
         id="myGrid"
         style={{
@@ -277,8 +277,8 @@ const Board = (props) => {
           }}
         />
       </div>
-    </Paperbase>
+    </Layout>
   );
 };
 
-export default Board;
+export default Board1;

@@ -1,5 +1,5 @@
 export const OPST_OPEN = '이의 신청 시스템';
-export const LOGO = 'BookUs!';
+export const LOGO = 'logo';
 export const OAUTH_GOOGLE = 'Google 계정 사용하기';
 export const LOGIN_SOCIAL = '소셜 계정을 사용해서 로그인';
 export const BEFORE_LOGIN = '가입 혹은 로그인';

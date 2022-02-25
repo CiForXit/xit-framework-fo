@@ -1,4 +1,8 @@
-//import {ThemeProvider} from 'styled-components';
+import {createTheme, ThemeProvider} from '@mui/material';
+import theme from 'commons/theme';
+import Normalize from 'commons/style/Normalize';
+import GlobalStyles from 'commons/style/GlobalStyle';
+
 import ROUTES from 'commons/constants/routes';
 
 import LoginLocal from 'pages/Login/LoginLocal';
@@ -17,21 +21,10 @@ import {AgGrid} from 'components';
 import CellRendering from 'components/organisms/AgGrid/CellRendering';
 import {Board, Signin} from 'pages';
 import BoardService from 'apis/BoardService';
-
-//import styles from './App.module.css';
-//import Header from './components/layout/Header';
-//import Footer from './components/layout/Footer';
-//import LoginSocial from './pages/Login/LoginSocial';
-//import NotFound from './components/common/NotFound';
-//import OAuth2RedirectHandler from './components/auth/OAuth2RedirectHandler';
-//import Login from './containers/Login';
-// import PrivateRoute from './pages/Login/PrivateRoute';
-// import Profile from './components/auth/Profile';
-// import {Login, NotFound} from './pages';
-// import Main from './pages/Main';
-// import historyRecord from 'grid';
-
-//export type TAuthservice = AuthService;
+import Layout from './pages/Layout/Layout';
+import Main from './pages/Main';
+import Paperbase from './pages/paperbase/Paperbase';
+import Board1 from './pages/Board/Board';
 
 export interface IAppProps {
   authService: AuthService;
@@ -66,14 +59,21 @@ const App = ({authService}: IAppProps) => {
 
   // @ts-ignore
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <Normalize />
+      <GlobalStyles />
+
       <BrowserRouter>
         {/*<Header />*/}
 
         <Routes>
           <Route path="/" element={<LoginLocal authService={authService} />} />
+          <Route path="/layout" element={<Layout />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/paper" element={<Paperbase />} />
 
           <Route path="/board" element={<Board />} />
+          <Route path="/board1" element={<Board1 />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/grid" element={<GridRecord />} />
           <Route path="/grid2" element={<AgGrid />} />
@@ -97,8 +97,7 @@ const App = ({authService}: IAppProps) => {
         {/*<Footer />*/}
       </BrowserRouter>
       <Alert stack={{limit: 3}} timeout={3000} position="top-right" effect="slide" offset={65} />
-    </>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 };
 

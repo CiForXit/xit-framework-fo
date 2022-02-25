@@ -1,11 +1,11 @@
-import {createTheme} from '@material-ui/core/styles';
+import {createTheme} from '@mui/material';
 // import purple from "@material-ui/core/colors/purple";
 // import green from "@material-ui/core/colors/green";
 
 const theme = createTheme({
-  //   palette: {
-  //     type: "dark",
-  //   },
+  palette: {
+    //type: "dark",
+  }
 });
 
 export default theme;

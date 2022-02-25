@@ -10,7 +10,7 @@ function Footer(): React.ReactElement {
     <>
       <Divider />
       <S.Container>
-        <S.Img alt={'Logo'} src={logoGray} />
+        <S.Img alt={'Logo'} src={''} />
         <S.Info>{FOOTER_INFO}</S.Info>
       </S.Container>
     </>

@@ -13,9 +13,9 @@ import {
   Box,
   Typography,
   Container
-} from '@mui/material/';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import styled from 'styled-components';
+} from '@mui/material';
+import {createTheme, ThemeProvider} from '@mui/material';
+import {styled} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 
 const FormHelperTexts = styled(FormHelperText)`
